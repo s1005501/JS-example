@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>promise 練習</title>
+    </head>
+    <body>
+        <script>
+            // 我自己瞎寫的練習
+            function tryPromise(str) {
+                const randomTime = Math.floor(Math.random() * 1000);
+                return new Promise((res, rej) => {
+                    setTimeout(() => {
+                        const r = str + ":" + randomTime;
+                        res(r);
+                    }, randomTime);
+                });
+            }
+
+            // promise
+            tryPromise("A")
+                .then((r) => {
+                    console.log(r);
+                    return tryPromise("B");
+                })
+                .then((r) => {
+                    console.log(r);
+                });
+
+            // async
+            const tryAsync = async () => {
+                console.log(1);
+                console.log(await tryPromise("A"));
+                console.log(await tryPromise("B"));
+                console.log(2);
+                console.log(await tryPromise("C"));
+                console.log(await tryPromise("D"));
+                console.log(3);
+            };
+            // tryAsync();
+        </script>
+    </body>
+</html>

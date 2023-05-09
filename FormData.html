@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FormData</title>
+    </head>
+    <body>
+        <form
+            id="form"
+            enctype="multipart/form-data"
+            action="/upload"
+           name="form1"
+        >
+            <input type="text" name="name" />
+            <input type="file" name="file" />
+            <button>Submit</button>
+        </form>
+        <button id="formAppend" type="button">append</button>
+        <button id="formDelete" type="button">delete</button>
+        <button id="formSet" type="button">set</button>
+        <button id="formGet" type="button">get</button>
+
+        <script>
+            // 在JS裡前端傳送資料到後端有很多種資料格式，multipart/form-data就是最常見的幾種(表頭的Content-Type可以查看送資料的格式)，其最大的用處在於使用者可以把複數個資料格式一次傳送（一個請求）出去，主要用在HTML的表單裡頭，或是在實作檔案上傳功能時使用到
+
+            // 而multipart/form-data主要傳送的是FormData物件
+
+            // 表單建議都加上name屬性，較方便之後操作
+
+            // 基本上只要是HTML的Form表單送出去的資料都是FormData物件。
+
+            // 另外fetch資料，方法POST的時候，只要把資料放到body裡，也會被瀏覽器轉為FormData物件
+
+            // FormData物件可自行建構操作，透過new來完成，資料格式是鍵值對。可乘載指定的表單的資料(在FormData()的()裡下document.(form表單的name屬性值)就可取得該表單的資料)。也可透過內建API在FormData物件裡自行新增、刪除、修改資料
+
+            // const 變數= new FormData(document.form表單的name屬性值)
+
+            const formData = document.querySelector("#form");
+            const formAppend = document.querySelector("#formAppend");
+            const formDelete = document.querySelector("#formDelete");
+            const formSet = document.querySelector("#formSet");
+            const formGet = document.querySelector("#formGet");
+            const fd = new FormData();
+
+            // append()
+            formAppend.addEventListener("click", () => {
+                // 功能跟set()差不多，不確定差在哪
+                fd.append("formAppend", "formAppend");
+                console.log(fd.get("formAppend"));
+            });
+
+            // delete()
+            formDelete.addEventListener("click", () => {
+                fd.append("formDelete", "formDelete");
+                console.log(fd.get("formDelete"));
+                // delete()可刪除FormData裡的資料，()內給資料的key值
+                fd.delete("formDelete");
+                console.log(fd.get("formDelete"));
+            });
+
+            // set()
+            formSet.addEventListener("click", () => {
+                // 可以透過set()新增資料，()要有兩個參數，第一個是Key(用來辨識資料的名稱，如果是表單資料的話就會是input的name)，第二個是value(真正要傳的資料，如果是表單資料的話就會是input的value)
+                fd.set("formSet", "formSet");
+                console.log(fd.get("formSet"));
+            });
+
+            // get()、getAll()
+            formGet.addEventListener("click", () => {
+                // get()可取得FormData的鍵值對裡的value值，()給鍵值對的key的名稱。
+                console.log(fd.get("formAppend"));
+                // getAll()功能跟get()一樣，差在如果key有重複，get只能取道第一個的值，getAll可以全部抓出來，輸出值的是陣列
+                console.log(fd.getAll("formAppend"));
+            });
+
+            formData.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                // entries()可同時得到key、value，以陣列格式輸出，前key後value，但要搭配for...of迴圈
+                const fd2 = new FormData(document.form1);
+                for (let pair of fd2.entries()) {
+                    if (pair[1].name) {
+                        console.log(`key:${pair[0]}, value:${pair[1].name}`);
+                    } else {
+                        console.log(`key:${pair[0]}, value:${pair[1]}`);
+                    }
+                }
+            });
+        </script>
+    </body>          method="POST"
+   
+</html>

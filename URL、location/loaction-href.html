@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>location href</title>
+    </head>
+
+    <body>
+        <div id="info"></div>
+        <button id="hrefLocal">取得當前網址</button>
+        <button id="hrefGoogle">跳轉到google</button>
+        <script>
+            const info = document.querySelector("#info");
+            const hrefLocal = document.querySelector("#hrefLocal");
+            const hrefGoogle = document.querySelector("#hrefGoogle");
+            // 取得當前網址
+            hrefLocal.addEventListener("click", () => {
+                info.innerHTML = location.href;
+            });
+            // 更改網址達到跳轉的效果
+            hrefGoogle.addEventListener("click", () => {
+                location.href = "https://www.google.com/";
+            });
+        </script>
+    </body>
+</html>

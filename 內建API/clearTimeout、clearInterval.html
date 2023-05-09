@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>clearTimeout、clearInterval</title>
+    </head>
+    <body>
+        <button id="timeout">clearTimeout</button>
+        <button id="interval">clearInterval</button>
+        <script>
+            const timeout = document.querySelector("#timeout");
+            const interval = document.querySelector("#interval");
+            const hello = setTimeout(() => {
+                alert("hello");
+            }, 3000);
+            timeout.addEventListener("click", () => {
+                clearTimeout(hello);
+                console.log("success stop setTimeout");
+            });
+            console.log("--------------------------");
+
+            let num = 0;
+            const count = setInterval(() => {
+                num++;
+                console.log(num);
+            }, 1000);
+            interval.addEventListener("click", () => {
+                clearInterval(count);
+                console.log("success stop setInterval");
+            });
+        </script>
+    </body>
+</html>

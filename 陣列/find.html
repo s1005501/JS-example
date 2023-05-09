@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>find</title>
+    </head>
+    <body>
+        <script>
+            // // 第三個參數arr通常用不到
+            // const result = arr.find((v, i, arr) => {
+            //     return 搜尋條件;
+            // });
+            const people = [
+                {
+                    name: "Casper",
+                    like: "鍋燒意麵",
+                    age: 18,
+                },
+                {
+                    name: "Wang",
+                    like: "炒麵",
+                    age: 24,
+                },
+                {
+                    name: "Bobo",
+                    like: "蘿蔔泥",
+                    age: 1,
+                },
+                {
+                    name: "滷蛋",
+                    like: "蘿蔔泥",
+                    age: 3,
+                },
+            ];
+
+            const findEmpty = people.find((v, i, arr) => {});
+            console.log(findEmpty); // undefined
+            const findAgeThan5 = people.find((v, i, arr) => v.age > 5);
+            console.log(findAgeThan5);
+            // {name: 'Casper', like: '鍋燒意麵', age: 18}
+            const findLike = people.find((v, i, arr) => v.like == "蘿蔔泥");
+            console.log(findLike);
+            // {name: 'Bobo', like: '蘿蔔泥', age: 1}
+            console.log(people);
+        </script>
+    </body>
+</html>

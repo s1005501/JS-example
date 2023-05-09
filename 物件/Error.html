@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Error</title>
+    </head>
+    <body>
+        <script>
+            // 當程式執行期間發生錯誤時，Error物件會被拋出並中斷程式的執行。
+            // 也可以建構新的Error物件，讓我們能自行操控錯誤的條件、跟錯誤的訊息。操控錯Error物件拋出要透過throw
+            // 也可以透過Error的屬性name(查看Error物件的名稱)、message(查看Error物件的訊息)查看Error物件的資訊
+            const aa = new Object({ name: "kevin" });
+            console.log(aa.name);
+            console.log(1);
+            const newError = new Error("錯誤Error");
+            console.log(newError.message);
+            console.log(newError.name);
+            throw newError;
+            console.log(2);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>物件導向(舊的ES6以前)</title>
+    </head>
+    <body>
+        <script>
+            // php 2022-12-01 10-06 22:30~底
+            // ES5之前(含ES5)
+            // 相當建構函式
+            function Person(name, age) {
+                this.name = name || "Hank"; // ||是給預設
+                this.age = age || 18;
+                this.getInfo = function () {
+                    return `${this.name}, ${this.age}`;
+                };
+            }
+            // 上面像是一個藍圖，透過new真的建構出一個可以操作的物件
+            const p1 = new Person("Kevin", 30);
+            console.log(p1);
+            console.log(p1 + "");
+            console.log(p1.name, p1.age);
+            console.log(p1.getInfo());
+            console.log("---------------------");
+
+            // 舊版的缺點在於直接呼叫該物件，會輸出undefined，但其子屬性會變成window底下的子屬性，而不是指向我們呼叫的物件
+            console.log(Person());
+            console.log(window.name);
+            console.log(window.age);
+            console.log("---------------------");
+
+            // 原型鏈擴充功能
+            // 注意這裡不能用箭頭函式
+            // 當物件的型態轉成字串時觸發function
+            // 其原理是因為所有物件都會繼承Object的特性、功能，因此如果我們透過Object去修改原型鍊的功能的話，之前建構的物件也會繼承到該修改(這支JS裡的所有的物件都會繼承該特性)
+            // Object改成Person也可以，表示只有Person這個物件的才會被修改到，用Object表示所有的物件都會被修改到
+            Object.prototype.toString = function () {
+                return JSON.stringify(this);
+            };
+            console.log(p1 + "");
+        </script>
+    </body>
+</html>

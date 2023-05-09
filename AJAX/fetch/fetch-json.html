@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>fetch-json</title>
+    </head>
+    <body>
+        <button onclick="doLoad()">=</button>
+        <div id="info"></div>
+
+        <script>
+            function doLoad() {
+                console.log(1);
+                fetch(`p20221130-15-json.php`)
+                    .then((r) => {
+                        console.log(2);
+                        console.log(r);
+                        return r.json();
+                    })
+                    .then((obj) => {
+                        console.log(3);
+                        console.log(obj);
+                    })
+                    .catch((ex) => {
+                        console.log(ex);
+                    });
+                console.log(4);
+            }
+
+            // async/await寫法
+            // async function doLoad() {
+            //     try {
+            //         let data = await fetch("p20221130-15-json.php", {
+            //             method: "GET",
+            //         }).then((r) => {
+            //             return r.json();
+            //         });
+            //         console.log(data);
+            //     } catch (ex) {
+            //         console.log(ex);
+            //     }
+            // }
+        </script>
+    </body>
+</html>

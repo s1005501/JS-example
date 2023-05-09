@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>while迴圈</title>
+    </head>
+    <body>
+        <script>
+            while (條件式) {
+                迴圈內容;
+            }
+            let str = "";
+            while (true) {
+                str += "*";
+                if (str.length >= 20) {
+                    break; // break可以離開迴圈，常用在做迴圈的條件判斷
+                }
+                console.log(str);
+            }
+        </script>
+    </body>
+</html>

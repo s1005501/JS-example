@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>for...in</title>
+    </head>
+    <body>
+        <div id="info"></div>
+        <script>
+            // for...in迴圈的變數輸出的是集合的key
+            // for (let 變數 in 陣列) {
+            //     迴圈內容;
+            // }
+            const myVar = "cat";
+            const p1 = {
+                name: "john",
+                age: 25,
+                gender: "male",
+                data: { a: 2 },
+                2: 8, // 可以用, 但避免這樣用
+                [myVar]: "my-cat",
+            };
+
+            for (let key in p1) {
+                info.innerText += `${typeof key}\n`;
+                info.innerText += `${key}: ${p1[key]}\n`;
+            }
+        </script>
+    </body>
+</html>

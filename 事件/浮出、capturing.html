@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>事件浮出模型、capturing</title>
+        <style>
+            .rect {
+                position: relative;
+                width: 300px;
+                height: 300px;
+                background-color: rgb(176, 221, 234);
+                border: 1px solid gray;
+            }
+            .ball {
+                position: absolute;
+                width: 150px;
+                height: 150px;
+                background-color: rgb(250, 62, 37);
+                border: 1px solid gray;
+                border-radius: 50%;
+                left: 50px;
+                top: 50px;
+            }
+            .rect2 {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                background-color: rgb(173, 241, 172);
+                border: 1px solid gray;
+                left: 50px;
+                top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="rect">
+            <div class="ball">
+                <div class="rect2"></div>
+            </div>
+        </div>
+
+        <script>
+            const rect = document.querySelector(".rect");
+            const ball = document.querySelector(".ball");
+            const rect2 = document.querySelector(".rect2");
+
+            // // event bubbling
+            // // 從裡面往外浮出去
+            // rect.addEventListener("click", (event) => {
+            //     // rect.style.backgroundColor = "yellow";
+            //     console.log("rect", event.eventPhase);
+            // });
+            // ball.addEventListener("click", (event) => {
+            //     // ball.style.backgroundColor = "blue";
+            //     console.log("ball", event.eventPhase);
+            // });
+            // rect2.addEventListener("click", (event) => {
+            //     console.log("rect2", event.eventPhase);
+            // });
+
+            //   第三個參數預設是false，capturing的運作是從外往裡運作
+            rect.addEventListener(
+                "click",
+                (event) => {
+                    console.log("rect-", event.eventPhase);
+                },
+                true
+            );
+            ball.addEventListener(
+                "click",
+                (event) => {
+                    console.log("ball-", event.eventPhase);
+                },
+                true
+            );
+            rect2.addEventListener(
+                "click",
+                (event) => {
+                    console.log("rect2-", event.eventPhase);
+                },
+                true
+            );
+
+            window.addEventListener(
+                "click",
+                (event) => {
+                    console.log("window-", event.eventPhase);
+                },
+                true
+            );
+        </script>
+    </body>
+</html>

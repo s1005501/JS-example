@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>this</title>
+    </head>
+    <body>
+        <script>
+            // 寫在物件裡的話就相當於是物件呼叫function
+            const user = {
+                name: "Kevin",
+                speak() {
+                    console.log("Hello world! My name is " + this.name); // (1)
+                },
+            };
+            user.speak(); // Hello world! My name is Kevin
+            console.log("---------------------");
+
+            // 直接定義function就相當於是在window裡呼叫，所以this指向的會是window
+            function windowThis() {
+                console.log(this);
+            }
+            windowThis(); // window
+            console.log("---------------------");
+
+            // this的值是動態決定的，是在被呼叫的當下才會決定的
+            function speak() {
+                return console.log("Hello world! My name is " + this.name); // (1)
+            }
+
+            const john = {
+                name: "John",
+            };
+            const chris = {
+                name: "Chris",
+            };
+            john.speak = speak;
+            chris.speak = speak;
+            john.speak(); // Hello world! My name is john
+            chris.speak(); // Hello world! My name is Chris
+            console.log("---------------------");
+
+            // 箭頭函式沒有自己的this，他的this由外層的環境決定
+            // arrow1的this的外層的環境是window，因此此時this就指向window本身
+            const arrow1 = () => {
+                console.log(this);
+            };
+            arrow1(); // window
+
+            const people = {
+                name: "Kevin",
+                // arrow2的this雖然是在物件裡但因為外層沒有另外的function去呼叫他， 所以arrow2的外層的環境仍是window，this一樣是指向window
+                arrow2: () => {
+                    console.log(this);
+                },
+                // arrow3是在speak這個function裡宣告的，因此arrow3的this指向的會是speak的this，也就是people這個物件
+                // 如果speak也改成箭頭函式，arrow3指向的就會是window
+                speak() {
+                    console.log(this);
+                    const arrow3 = () => {
+                        console.log(this);
+                    };
+                    arrow3();
+                },
+            };
+
+            people.arrow2(); // window
+            people.speak(); // people
+        </script>
+    </body>
+</html>

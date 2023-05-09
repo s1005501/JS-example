@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>國良老師的this</title>
+    </head>
+    <body>
+        <button>Click</button>
+
+        <script>
+            // JQ 2022-12-30 09-05 頭~尾
+            // "use strict";
+            // ES5 function 函式 THIS 是變動的，大部分的情況下都是誰呼叫就是誰
+            function a() {
+                console.log("a", this);
+            }
+            // 相當於是window.a()，window呼叫，所以this指向window
+            // a();
+
+            // setTimeout的機制是先把setTimeout這段程式碼先拋出去主執行序外等待其設定的時間到了後由window執行，而JS主執行序則繼續往下跑執行主程式的code，等到setTimeout這段程式碼的等待時間到了以後會到queue等待執行(按執行順序)，待主執行序都完成後，setTimeout這段程式碼才會回到主程式由window執行，這就是非同步
+            // 因此setTimeout是由window呼叫執行的，this也指向window
+            function b() {
+                setTimeout(() => {
+                    console.log("b", this);
+                }, 1000);
+            }
+            // b();
+
+            // ES6 箭頭函式，this 其實有點像是作用域，在寫的當下就已決定
+            const c = () => {
+                console.log("c", this);
+            };
+            // c();
+
+            const d = () => {
+                setTimeout(() => {
+                    console.log("d", this);
+                }, 2000);
+            };
+            // d();
+
+            const obj = {
+                name: "obj",
+                a: function () {
+                    // 再還沒有箭頭函式時的解法，再函式裡趁this還指向自己的時候先給一個變數去承接
+                    var self = this;
+                    setTimeout(function () {
+                        console.log("obj's a this:", this);
+                        console.log("obj's a self:", self);
+                    }, 1000);
+                },
+                // 這樣寫箭頭函式的this就會是外層的function的this
+                b: function () {
+                    setTimeout(() => {
+                        console.log("obj's b this:", this);
+                    }, 1000);
+                },
+                c: () => {
+                    setTimeout(function () {
+                        console.log("obj's c this:", this);
+                    }, 1000);
+                },
+                d: () => {
+                    setTimeout(() => {
+                        console.log("obj's d this:", this);
+                    }, 1000);
+                },
+            };
+            // obj.a();
+            // obj.b();
+            // obj.c();
+            // obj.d();
+
+            const button = document.querySelector("button");
+            button.addEventListener("click", (event) => {
+                console.log("event this", this);
+                console.log("event currentTarget", event.currentTarget);
+            });
+
+            button.addEventListener("click", function (event) {
+                console.log(this);
+                console.log(event.currentTarget);
+            });
+        </script>
+    </body>
+</html>

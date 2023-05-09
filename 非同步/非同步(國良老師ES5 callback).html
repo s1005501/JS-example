@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>非同步(國良老師ES5 callback)</title>
+    </head>
+    <body>
+        <script>
+            // 需要非同步來處理，讓程式按照我們想要的順序來執行
+            // 這兩種作法都容易造成callback hell的出現
+            // 這種做法可以讓程式按我們的順序執行，但因為是寫死的所以極不彈性
+            function a() {
+                const randomTime = Math.floor(Math.random() * 1000);
+                setTimeout(() => {
+                    console.log("a");
+                    b();
+                }, randomTime);
+            }
+            function b() {
+                const randomTime = Math.floor(Math.random() * 1000);
+                setTimeout(() => {
+                    console.log("b");
+                    c();
+                }, randomTime);
+            }
+            function c() {
+                const randomTime = Math.floor(Math.random() * 1000);
+                setTimeout(() => {
+                    console.log("c");
+                }, randomTime);
+            }
+            // a()
+
+            // ES5 callback function 回呼函式
+            // 把function當成參數，較上面的的方式好一些，但一樣要傳一堆參數，且不好閱讀
+            const first = (callback) => {
+                setTimeout(() => {
+                    console.log("first");
+                    callback();
+                }, 1000);
+            };
+            const sec = () => {
+                setTimeout(() => {
+                    console.log("sec");
+                }, 1000);
+            };
+            first(sec);
+        </script>
+    </body>
+</html>

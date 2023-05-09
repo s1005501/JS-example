@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>解構賦值(物件篇)</title>
+    </head>
+    <body>
+        <script>
+            // 物件解構
+            // 物件解構是找相對應的名稱
+            const people = {
+                kevin: "凱文",
+                eric: "艾瑞克",
+                hank: "漢克",
+            };
+            // const { kevin, eric, hank } = people;
+            // console.log({ kevin, eric, hank }); // {kevin: '凱文', eric: '艾瑞克', hank: '漢克'}
+
+            // 重新賦予變數名稱
+            // 將kevin解構出來後再改成kevinNew
+            const { kevin: kevinNew } = people;
+            console.log({ kevinNew }); // {kevinNew: '凱文'}
+            // console.log({ kevin }); // kevin is not defined
+            console.log("--------------");
+
+            // 物件解構預設值
+            // 再{}裡找family，沒找到時套用預設把family改成ming後賦值"小明"(邏輯應該是這樣吧???)
+            const { family: ming = "小明" } = {};
+            console.log(ming); // 小明
+        </script>
+    </body>
+</html>

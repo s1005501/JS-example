@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>物件轉陣列</title>
+    </head>
+    <body>
+        <script>
+            // 物件轉陣列
+            const obj = {
+                name: "Kevin",
+                age: 30,
+                location: {
+                    country: "TW",
+                    county: "New Taipei",
+                },
+            };
+            // 透過Object.keys(物件)
+            const objKey = Object.keys(obj);
+            console.log(objKey);
+
+            // 透過Object.values(物件)
+            const objValue = Object.values(obj);
+            console.log(objValue);
+
+            // 透過Object.entries(物件)
+            const objEntries = Object.entries(obj);
+            console.log(objEntries);
+
+            // 再接成一個陣列
+            let a = [];
+            objEntries.forEach((v, i) => {
+                a = [...a, ...v];
+                return a;
+            });
+            console.log(a);
+        </script>
+    </body>
+</html>

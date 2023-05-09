@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>innerText</title>
+    </head>
+    <body>
+        <div class="innerText1">我是innerText1</div>
+        <button class="btn">按我按我</button>
+
+        <script>
+            const innerText1 = document.querySelector(".innerText1");
+            const btn = document.querySelector(".btn");
+            btn.addEventListener("click", () => {
+                innerText1.innerText = "我不是innerText1";
+            });
+        </script>
+    </body>
+</html>

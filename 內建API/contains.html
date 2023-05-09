@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>contains</title>
+    </head>
+    <body>
+        <div class="example">
+            <p class="kevin">Kevin</p>
+        </div>
+        <script>
+            const example = document.querySelector(".example");
+            const kevin = document.querySelector(".kevin");
+            const span = document.querySelector("span");
+            console.log(example.contains(kevin)); // true
+            console.log(example.contains(span)); // false
+            console.log("--------------------");
+
+            const p = document.querySelector("p");
+            console.log(p.classList); // DOMTokenList ['kevin', value: 'kevin']
+            console.log(p.className); // kevin
+            console.log(p.classList.contains("kevin")); // true
+            console.log(p.className.includes("kevin")); // true
+        </script>
+    </body>
+</html>

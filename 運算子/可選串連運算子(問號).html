@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>可選串連運算子?</title>
+    </head>
+    <body>
+        <script>
+            // ES2020新增的語法糖，用來精簡判斷物件是否存在時以及防止錯誤的發生影響程式的運行
+            const adventurer = {
+                name: "Alice",
+                cat: {
+                    name: "Dinah",
+                },
+            };
+            // 在要做判斷的資料後面加上?即可，如果沒有該屬性或變數就輸出undefined
+            // const dogName = adventurer.dog?.name;
+            // 等同於這樣寫
+            const dogName = adventurer.dog && adventurer.dog.name;
+            
+            // 不加?的話會噴錯
+            // const dogName = adventurer.dog.name; // Uncaught TypeError
+            console.log(dogName);
+        </script>
+    </body>
+</html>

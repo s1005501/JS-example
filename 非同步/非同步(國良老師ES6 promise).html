@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>非同步(國良老師ES6 promise)</title>
+    </head>
+    <body>
+        <script>
+            // ES6 新增 Promise 物件 來改善非同步寫法的問題
+
+            // 如果女朋友打電話來請我幫她訂餐廳，我在上班，但我承諾她我忙完一定會做
+
+            const order = function () {
+                return new Promise((resolve, reject) => {
+                    // 有位子 => resolve()
+                    // 沒位子=>reject()
+                    // 沒server先用if模擬
+                    if (true) {
+                        resolve("Yes");
+                    } else {
+                        reject("No");
+                    }
+                });
+            };
+            order()
+                .then(function (result) {
+                    console.log("result", result);
+                    return result;
+                })
+                .then((result) => {
+                    const newResult = result + ", I got it.";
+                    console.log("newResult", newResult);
+                })
+                .catch((error) => {
+                    console.log("error msg:", error);
+                });
+
+            // try catch只能用在同步，而且只能捕捉到一次錯誤
+            // try {
+            //     order().then(function (result) {
+            //         console.log("result", result);
+            //     });
+            // } catch (ex) {
+            //     console.log(ex);
+            // }
+        </script>
+    </body>
+</html>

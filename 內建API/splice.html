@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>splice</title>
+    </head>
+    <body>
+        <script>
+            const people = [1, 2, 3];
+            let people1 = [...people];
+            // 刪除
+            people1.splice(0, 1);
+            console.log(people1); // [2, 3]
+            // 添加
+            let people2 = [...people];
+            people2.splice(2, 0, 666); // [1, 2, 666, 3]
+            console.log(people2);
+            // 取代
+            let people3 = [...people];
+            people3.splice(2, 1, 666); // [1, 2, 666]
+            console.log(people3);
+        </script>
+    </body>
+</html>

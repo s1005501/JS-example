@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>setInterval</title>
+    </head>
+    <body>
+        <button id="start">開始計算</button>
+        <button id="end">停止計算</button>
+
+        <script>
+            // setInterval(() => {
+            //     執行內容;
+            // }, 間隔時間(單位毫秒));
+            const start = document.querySelector("#start");
+            const end = document.querySelector("#end");
+            end.addEventListener("click", () => {
+                clearInterval(count);
+            });
+            let num = 0;
+            start.addEventListener("click", () => {
+                count = setInterval(() => {
+                    console.log(num++);
+                }, 1000);
+            });
+        </script>
+    </body>
+</html>

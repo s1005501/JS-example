@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>switch</title>
+    </head>
+    <body>
+        <input
+            type="number"
+            id="score"
+            min="0"
+            max="100"
+            value="0"
+            onchange="scoreChange()"
+        />
+        <div id="box"></div>
+
+        <script>
+            // switch (變數) {
+            //     case 值1:
+            //         變數值為1時;
+            //         break;
+            //     case 值1:
+            //         變數值為1時;
+            //         break;
+            //     default:
+            //         變數值以上都不是時;
+            // }
+            function scoreChange() {
+                const myscore = +document.querySelector("#score").value;
+                const box = document.querySelector("#box");
+                let s = parseInt(myscore / 10);
+                console.log(s);
+                switch (s) {
+                    case 10:
+                    case 9:
+                        box.innerHTML = "A";
+                        break;
+                    case 8:
+                        box.innerHTML = "B";
+                        break;
+                    case 7:
+                        box.innerHTML = "C";
+                        break;
+                    case 6:
+                        box.innerHTML = "D";
+                        break;
+                    default:
+                        box.innerHTML = "F";
+                }
+            }
+            scoreChange();
+        </script>
+    </body>
+</html>

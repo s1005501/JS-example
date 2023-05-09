@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>for...of</title>
+    </head>
+    <body>
+        <script>
+            // for...of迴圈的變數輸出的是集合的value
+            // for (let 變數 of 陣列) {
+            //     迴圈內容;
+            // }
+
+            // 可迭代陣列使用for...of
+            const ar = [2, "aa", 5, 7, 10];
+            ar[9] = 12145;
+            // 這個就出不來
+            ar.try = "bbb";
+            for (let value of ar) {
+                console.log(value);
+            }
+            console.log("---------------");
+
+            // 不可迭代之物件搭配Object.values使用for...of
+            const student = {
+                name: "Kevin",
+                age: 30,
+                location: {
+                    country: "TW",
+                    county: "New Taipei",
+                },
+            };
+
+            console.log(Object.values(student));
+            for (let value of Object.values(student)) {
+                console.log(value);
+            }
+        </script>
+    </body>
+</html>

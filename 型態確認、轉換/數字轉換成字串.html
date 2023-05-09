@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>數字轉換成字串</title>
+    </head>
+    <body>
+        <script>
+            // 透過+號串接的方式
+            const example = 5;
+            console.log(example + "變成字串吧");
+
+            // 透過toString
+            console.log(example.toString());
+            // 直接給數字也可以但數字前後要用小括號包起來，不包起來會噴錯
+            console.log((500).toString());
+
+            // toString()裡的小括號裡給數值可以指定要轉成幾進位的字串
+            const n = 255;
+            const s = "AE";
+            console.log(n.toString(16)); // 轉換為十六進位的字串(ff)
+            console.log(parseInt(s)); // NaN
+            // parseInt(字串,數字)可以判斷要轉成後面數字進位的數值
+            console.log(parseInt(s, 16)); // 十六進位的字串轉換為數值
+            console.log((300).toString(16)); // 12c
+        </script>
+    </body>
+</html>

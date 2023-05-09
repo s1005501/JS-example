@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>innerHTML</title>
+    </head>
+    <body>
+        <div class="innerHTML1">我是innerHTML1</div>
+        <button class="btn">按我按我</button>
+
+        <script>
+            const innerHTML1 = document.querySelector(".innerHTML1");
+            const btn = document.querySelector(".btn");
+            btn.addEventListener("click", () => {
+                innerHTML1.innerHTML = `<h1>我現在是h1啦</h1>`;
+            });
+        </script>
+    </body>
+</html>

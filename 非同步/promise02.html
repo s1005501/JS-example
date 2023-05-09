@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>promise02</title>
+    </head>
+    <body>
+        <script>
+            // 發生錯誤時
+            // 如果發生錯誤時catch就去捕捉到，錯誤就不會往全域跑，就不會導致整支程式停下來
+            // 也可以不用變數去承接promise，then直接接在後面就好
+            new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    reject(new Error("發生錯誤1"));
+                    // resolve([4, 5, 6]);
+                }, 1000);
+            })
+                .then((param) => {
+                    throw new Error("發生錯誤2"); // Error是自訂義的錯誤物件搭配throw使用
+                    console.log({ param });
+                })
+                .catch((error) => {
+                    // reject的值會跳過then直進到error裡
+                    //   如果是在then裡發生錯誤一樣會被catch捕捉到
+                    //  catch能捕捉到他前面所有產生的錯誤
+                    console.log({ error }); // {error: Error: 發生錯誤1}
+                });
+
+            // // reject被呼叫沒搭配catch，錯誤會被往外丟，F12裡就會出現紅字的錯誤訊息
+            // const p1 = new Promise((res, rej) => {
+            //     rej(new Error("發生錯誤(無catch)"));
+            // }).then((r) => console.log(r));
+        </script>
+    </body>
+</html>

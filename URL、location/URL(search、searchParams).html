@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>URL(search、searchParams)</title>
+    </head>
+    <body>
+        <script>
+            let urlSearch = new URL(
+                "https://github.com/search?q=react&type=Code"
+            );
+            // search可以取得URL物件的Query String(網址上的參數)
+            // console.log(urlSearch.search);
+            // 透過search修改Query String
+            urlSearch.search = "name=Kevin&age=30";
+            // console.log(urlSearch.search);
+            // search優點是可以直接改Query String，缺點是不方便更改個別的值
+
+            // searchParams拿到的有URL物件Query String資料的URLSearchParams物件
+            // console.log(urlSearch.searchParams);
+            // console.log(urlSearch.searchParams.toString());
+            // console.log(urlSearch.searchParams.get("q"));
+            // searchParams優點是可以透過內建api去個別操作Query String的值，缺點是查看值要透過toString()再轉一次
+
+            // URLSearchParams物件可以直接轉換成URL.search，不用再toString()轉換一次
+            console.log(urlSearch.search);
+            const newURLSearchParams = new URLSearchParams({
+                name: "Eric",
+                age: 29,
+            });
+            urlSearch.search = newURLSearchParams;
+            console.log(urlSearch.search);
+        </script>
+    </body>
+</html>

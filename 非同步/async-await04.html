@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>async-await04</title>
+    </head>
+    <body>
+        <script>
+            function myPromise(str) {
+                const rnd = 500 + Math.floor(Math.random() * 1000);
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        reject(new Error("錯誤"));
+                        // resolve(str + ":" + rnd);
+                    }, rnd);
+                });
+            }
+
+            // 前兩個差別在於
+            // 第一個是每跑一次迴圈就會檢查一次錯誤，中間有錯後面的也會繼續跑
+            (async () => {
+                for (let i = 0; i < 10; i++) {
+                    try {
+                        console.log(await myPromise("A" + i));
+                    } catch (err) {
+                        console.log("A", err);
+                    }
+                }
+            })();
+
+            // 第二個是全部跑迴圈只要中間有錯迴圈就會被停下
+            (async () => {
+                try {
+                    for (let i = 0; i < 10; i++) {
+                        console.log(await myPromise("B" + i));
+                    }
+                } catch (err) {
+                    console.log("B", err);
+                }
+            })();
+
+            // 第三個是直接在接一個catch(因為async本質上還是一個promise)
+            (async () => {
+                for (let i = 0; i < 10; i++) {
+                    console.log(await myPromise("C" + i));
+                }
+            })().catch((err) => {
+                console.log("C", err);
+            });
+        </script>
+    </body>
+</html>

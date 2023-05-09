@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>多個if判斷</title>
+    </head>
+    <body>
+        <script>
+            const people = [
+                { name: "Kevin", age: 29 },
+                { name: "Eric", age: 29 },
+                { name: "Hank", age: 29 },
+            ];
+            const multipleIf = (arr) => {
+                return arr.map((v, i) => {
+                    if (arr[i].name.includes("Kevin"))
+                        return console.log("Kevin");
+                    if (arr[i].name.includes("Robert"))
+                        return console.log("Robert");
+                    if (arr[i].name.includes("Hank"))
+                        return console.log("Hank");
+                });
+            };
+            multipleIf(people);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>location search</title>
+    </head>
+
+    <body>
+        <div id="info"></div>
+        <button id="locationSearch">取得當前網頁網址上的參數</button>
+        <form>
+            <input type="text" id="changeParams" name="changeParams" />
+            <button>更改參數</button>
+        </form>
+        <script>
+            const info = document.querySelector("#info");
+            const locationSearch = document.querySelector("#locationSearch");
+
+            // 取得當前網頁網址上的參數
+            locationSearch.addEventListener("click", () => {
+                info.innerHTML = location.search;
+            });
+        </script>
+    </body>
+</html>

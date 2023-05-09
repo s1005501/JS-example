@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>點(.)and中括號([ ])表示法、取值</title>
+	</head>
+	<body>
+		<script>
+			const extMap = {
+				"image/jpg": ".jpg",
+				"image/png": ".png",
+				"image/gif": ".gif",
+			};
+			console.log(extMap["image/jpg"]);
+			console.log(!!extMap["image/jpg"]);
+
+			const ob = {
+				name: "kevin",
+				age: "29",
+			};
+			console.log(ob[name]); // []取值時裡面要是以字串型態表示，直接輸出會undefined
+			console.log(ob["name"]);
+			console.log(ob.name);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>try catch</title>
+    </head>
+    <body>
+        <script>
+            const str = '"abc"12';
+            let a;
+
+            try {
+                // 可能會出錯的程式碼放到try{}裡
+                a = JSON.parse(str);
+                // 下面這一行不會執行，上面出錯後就直接跳到catch去了
+                console.log({ a });
+            } catch (ex) {
+                // 有出錯會將出錯的部分顯示的錯誤資訊抓到catch{}裡
+                console.log({ ex }); // 自訂義變數通常叫ex
+
+                // 假設錯誤處理時又出錯，那就是再包一層try/catch
+                try {
+                    throw new Error("再出錯");
+                } catch (ex2) {
+                    console.log(ex2);
+                }
+            }
+            console.log("hello"); // 上面出錯但底下程式仍然能正常輸出
+        </script>
+    </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>async-await(練習)</title>
+    </head>
+    <body>
+        <script>
+            function myPromise(str) {
+                const rnd = 500 + Math.floor(Math.random() * 1000);
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve(str + ":" + rnd);
+                    }, rnd);
+                });
+            }
+
+            // async function myFunc() {
+            //     const r1 = await myPromise("A");
+            //     console.log({ r1 });
+            //     const r2 = await myPromise("B");
+            //     console.log({ r2 });
+            //     const r3 = await myPromise("C");
+            //     console.log({ r3 });
+            //     const r4 = await myPromise("D");
+            //     console.log({ r4 });
+            // }
+
+            // // async/await 一般函式寫法
+            // async function myFunc() {
+            //     console.log(await myPromise("A"));
+            //     console.log(await myPromise("B"));
+            // }
+
+            // async/await 箭頭函式寫法
+            // const myFunc = async () => {
+            //     console.log(await myPromise("A"));
+            //     console.log(await myPromise("B"));
+            // };
+            // myFunc();
+
+            // 用迴圈跑就不用重複寫那麼多次
+            // async只能確保在async修飾的那個function裡，code會按照我們要順序來執行，它沒辦法干預到其他非同步function的執行順序
+            // 交錯跑
+            // (async function () {
+            //     for (let i = 0; i < 10; i++) {
+            //         console.log(await myPromise("A" + i));
+            //     }
+            // })().then(() => console.log("A完成"));
+
+            // (async function () {
+            //     for (let i = 0; i < 10; i++) {
+            //         console.log(await myPromise("B" + i));
+            //     }
+            // })().then(() => console.log("B完成"));
+
+            // A跑完換B
+            // 匿名的箭頭函式
+            // (async () => {
+            //     for (let i = 0; i < 10; i++) {
+            //         console.log(await myPromise("A" + i));
+            //         if (i == 9) {
+            //             console.log("A完成");
+            //         }
+            //     }
+            //     for (let i = 0; i < 10; i++) {
+            //         console.log(await myPromise("B" + i));
+            //         if (i == 9) {
+            //             console.log("B完成");
+            //         }
+            //     }
+            // })().then(() => console.log("A、B都完成")); // 跑完接then不一定需要拿到資料，也可以直接console
+
+            // 自己瞎寫的練習
+            // const arr = [];
+            // (async function () {
+            //     for (let i = 0; i < 10; i++) {
+            //         const r = await myPromise("B" + i);
+            //         console.log(r);
+            //         arr.push(r);
+            //     }
+            // })().then(() => console.log(arr));
+        </script>
+    </body>
+</html>

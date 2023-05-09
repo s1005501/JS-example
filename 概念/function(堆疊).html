@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>function堆疊特性</title>
+    </head>
+    <body>
+        <script>
+            function a() {
+                console.log("a---開始");
+                b();
+                console.log("a---結束");
+            }
+
+            function b() {
+                console.log("b---開始");
+                c();
+                console.log("b---結束");
+            }
+
+            function c() {
+                console.log("c---開始");
+                console.log("c---結束");
+            }
+
+            a();
+            // 結果:
+            // a-- - 開始;
+            // b-- - 開始;
+            // c-- - 開始;
+            // c-- - 結束;
+            // b-- - 結束;
+            // a-- - 結束;
+
+            // 直接console.log(function())會出現undefined是因為function是表達式，如果沒有透過return回傳值的話，在最後會自動帶入undefined作呈現
+            console.log(a());
+        </script>
+    </body>
+</html>

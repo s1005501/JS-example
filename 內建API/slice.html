@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>slice</title>
+    </head>
+    <body>
+        <script>
+            // ()裡的數字是陣列、字串的索引值，切的時候都不包含結束的索引值
+            const str = "求真、篤信、力行";
+            const arr = ["Kevin", "Hank", "Eric"];
+
+            console.log(str.slice(3)); // 篤信、力行
+            console.log(str.slice(3, 5)); // 篤信
+            console.log(str.slice(str.length - 2)); // 力行
+            console.log("------------");
+
+            console.log(arr.slice(1)); // ['Hank', 'Eric']
+            console.log(arr.slice(1, 2)); // ['Hank']
+            console.log(arr.slice(arr.length - 1)); // ['Eric']
+        </script>
+    </body>
+</html>

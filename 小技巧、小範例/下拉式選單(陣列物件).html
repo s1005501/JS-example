@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>下拉式選單(陣列物件)</title>
+    </head>
+    <body>
+        <!-- 老師的版本 -->
+        <div>
+            <h1>老師的版本</h1>
+            <select id="cate1" onchange="render_cate2()"></select>
+            <select id="cate2"></select>
+        </div>
+
+        <!-- 我自己的修改版 -->
+        <div>
+            <h1>我的修改版</h1>
+            <select id="first"></select>
+            <select id="second"></select>
+        </div>
+
+        <script>
+            const cates = [
+                {
+                    sid: "1",
+                    name: "程式設計",
+                    parent_sid: "0",
+                    children: [
+                        {
+                            sid: "4",
+                            name: "PHP",
+                            parent_sid: "1",
+                        },
+                        {
+                            sid: "5",
+                            name: "JavaScript",
+                            parent_sid: "1",
+                        },
+                        {
+                            sid: "10",
+                            name: "C++",
+                            parent_sid: "1",
+                        },
+                    ],
+                },
+                {
+                    sid: "2",
+                    name: "繪圖軟體",
+                    parent_sid: "0",
+                    children: [
+                        {
+                            sid: "7",
+                            name: "PS",
+                            parent_sid: "2",
+                        },
+                        {
+                            sid: "16",
+                            name: "椅拉",
+                            parent_sid: "2",
+                        },
+                    ],
+                },
+                {
+                    sid: "3",
+                    name: "網際網路應用",
+                    parent_sid: "0",
+                    children: [
+                        {
+                            sid: "8",
+                            name: "Chrome",
+                            parent_sid: "3",
+                        },
+                        {
+                            sid: "9",
+                            name: "騙錢的",
+                            parent_sid: "3",
+                        },
+                    ],
+                },
+            ];
+
+            // 老師的版本
+            const cate1_tpl = () => {
+                const ar = cates.map(
+                    (el) => `<option value="${el.sid}">${el.name}</option>`
+                );
+                return ar.join("");
+            };
+
+            const render_cate2 = () => {
+                const c1 = cate1.value; // 第一個選單的值
+                const c1_item = cates.find((el) => el.sid === c1);
+                console.log(c1_item);
+                if (!c1_item) {
+                    //如果沒找到第一層的項目, 則設定空字串
+                    cate2.innerHTML = "";
+                }
+                console.log(c1_item.children);
+                const ar = c1_item.children.map(
+                    (el) => `<option value="${el.sid}">${el.name}</option>`
+                );
+                cate2.innerHTML = ar.join("");
+            };
+            // // 準備第一層分類選單
+            cate1.innerHTML = cate1_tpl();
+            render_cate2();
+
+            // 我自己的修改版
+            const first = document.querySelector("#first");
+            const second = document.querySelector("#second");
+            let arr1 = cates.map((v, i) => {
+                return (first.innerHTML += `<option value="${v.sid}">${v.name}</option>`);
+            });
+            // console.log(arr1);
+            // console.log(first.value);
+
+            const render = () => {
+                const firstValue = first.value;
+                const firstItem = cates.find(
+                    (v, i) => v.sid == firstValue
+                ).children;
+                console.log(firstItem);
+
+                second.innerHTML = " ";
+                const arr2 = firstItem.map((v, i) => {
+                    return (second.innerHTML += `<option value="${v.sid}">${v.name}</option>`);
+                });
+            };
+            first.addEventListener("change", render);
+            render();
+        </script>
+    </body>
+</html>

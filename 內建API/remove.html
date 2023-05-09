@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>remove</title>
+        <style>
+            .rect {
+                position: relative;
+                width: 800px;
+                height: 600px;
+                background-color: rgb(176, 221, 234);
+                border: 1px solid gray;
+            }
+            .ball {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                background-color: rgb(250, 62, 37);
+                border: 1px solid gray;
+                color: white;
+                border-radius: 50%;
+                line-height: 50px;
+                text-align: center;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="rect"></div>
+        <script>
+            const rect = document.querySelector(".rect");
+            const msg = "美國職棒大聯盟昨天年度新人王";
+
+            let str = "";
+            for (let i = 0; i < msg.length; i++) {
+                str += `<div class="ball abc" style="left: ${
+                    i * 60
+                }px; top: 50px;">${msg[i]}</div>`;
+            }
+
+            rect.innerHTML = str;
+            rect.addEventListener("click", (event) => {
+                const t = event.target; // 點到的東西
+                console.log(t.innerHTML);
+                console.log(t.className); // 篩選出t的css的class name
+                console.log(t.classList); // 顯示出t的class集合??
+
+                if (t.classList.contains("ball")) {
+                    // classList有包含ball的
+                    // classList可搭配contains()使用
+                    event.target.remove();
+                }
+                // if (t.className.includes("ball")) {
+                //   // className有包含ball的
+                //   // className可搭配includes()使用 我較喜歡這種
+                //   //
+                //   event.target.remove();
+                // }
+            });
+        </script>
+    </body>
+</html>

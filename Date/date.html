@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>date</title>
+    </head>
+    <body>
+        <script>
+            const t1 = new Date();
+            const t2 = new Date("2022-11-15");
+            const t3 = Date.parse("2022-11-15"); //  1970年至今的毫秒數, timestamp
+            const t4 = Date.now(); //  1970年至今的毫秒數
+            const t5 = new Date(1668470400000);
+            const t6 = new Date(2022, 9, 12); // 月份是索引
+            const t7 = new Date(2022, 9, 12, 8, 9, 10); // 後三個是時/分/秒
+
+            console.log({ t1, t2, t3, t4, t5, t6, t7 });
+            console.log(t1.getFullYear()); // 年
+            console.log(t1.getMonth()); // 月份的"索引"
+            console.log(t1.getDate()); // 幾號
+            console.log(t1.getDay()); // 星期幾 從星期天是0開始計算
+            console.log(t1.getHours()); // 時
+            console.log(t1.getMinutes()); // 分
+            console.log(t1.getSeconds()); // 秒
+            console.log(t1.getTime()); // timeStamp
+
+            setInterval(() => {
+                let t = new Date().toString();
+                console.log(t.split(" ")[4]);
+            }, 1000);
+        </script>
+    </body>
+</html>

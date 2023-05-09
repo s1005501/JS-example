@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .rect {
+                position: relative;
+                width: 300px;
+                height: 300px;
+                background-color: rgb(176, 221, 234);
+                border: 1px solid gray;
+            }
+            .ball {
+                position: absolute;
+                width: 150px;
+                height: 150px;
+                background-color: rgb(239, 201, 87);
+                border: 1px solid gray;
+                border-radius: 50%;
+                left: 50px;
+                top: 50px;
+            }
+            .rect2 {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                background-color: rgb(173, 241, 172);
+                border: 1px solid gray;
+                left: 30px;
+                top: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="rect">
+            <div class="ball">
+                <div class="rect2"></div>
+            </div>
+        </div>
+        <div id="info"></div>
+        <script>
+            const rect = document.querySelector(".rect");
+            const ball = document.querySelector(".ball");
+            const rect2 = document.querySelector(".rect2");
+
+            rect.addEventListener("mousemove", (e) => {
+                info.innerHTML = `
+        
+        page: ${e.pageX}, ${e.pageY}<br>
+        client: ${e.clientX}, ${e.clientY}<br>
+        offset: ${e.offsetX}, ${e.offsetY}<br>
+        `;
+            });
+            // page是整個頁面
+            // client是當前顯示頁面(圖如果夠小會跟page的值一樣)
+            // offset是顯示被選到的物件的座標(有點像是target的感覺，只顯示當前點到的物件的座標)
+        </script>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>參照</title>
+    </head>
+    <body>
+        <script>
+            // 參考網站：https://tw511.com/a/01/32118.html
+            // 按值傳遞
+            let a = 10;
+            let b = a;
+            console.log(b);
+            b = b + 666;
+            console.log(b);
+
+            // 參照傳遞
+            let x = [1];
+            let y = x;
+            y.push(2);
+            console.log(x);
+            console.log("-------------------");
+
+            // 按值傳遞與參照傳遞之比較
+            // 按值傳遞
+            const one = 1;
+            const oneCopy = 1;
+            console.log(one === oneCopy); // true
+            console.log(one === 1); // true
+            console.log(one === one); // true
+            console.log("-------------------");
+
+            // 參照傳遞
+            const ar1 = [1];
+            const ar2 = [1];
+            // false原因是ar1與ar2指向的是不同參照，[1]也跟ar1是不同參照
+            console.log(ar1 === ar2); // false
+            console.log(ar1 === [1]); // false
+            console.log("-------------------");
+
+            // ar3跟ar1指向的會是同一個參照，因此比較結果會是true
+            const ar3 = ar1;
+            console.log(ar1 === ar3); // true
+            console.log(ar1 === ar1); // true
+        </script>
+    </body>
+</html>

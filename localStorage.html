@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>localStorage</title>
+    </head>
+    <body>
+        <button id="saveStorage">存入localStorage</button>
+        <button id="getStorage">取的localStorage</button>
+        <button id="removeStorage">刪除localStorage</button>
+        <script>
+            //  Web Storage的一種
+            // 可以將資料儲存在使用者的瀏覽器，且可跨瀏覽器分頁使用，使用者關掉分頁或瀏覽器再打開資料仍不會消失。
+            // 資料無期效限制，可永久保留。
+            // 資料以鍵值對的方式保存，key、value都必須是字串，但這會有一個問題是如果我們存進去的資料是物件的話，資料就只會顯示成[Object Object]，要解決就要把資料先轉JSON(JSON.stringify())在存進去
+            // 在F12上可查看當前瀏覽器已經存在的localStorage資料，F12=>應用程式=>左側面版的本機儲存空間=>找到你當前的網址名稱點進去即可。
+            // 也可手動刪除localStorage，照上面步驟找到localStorage後，右鍵資料即可看到刪除選項
+            // 另外需要注意的一點是localStorage是有儲存大小的限制的，最多5MB，因此建議只存放簡單的資料，此外因為它會永久保存在瀏覽器裡，因此機密資料盡量不要透過這種方式傳遞，不然就是傳遞完要記得做刪除的動作
+
+            const saveStorage = document.querySelector("#saveStorage");
+            const getStorage = document.querySelector("#getStorage");
+            const removeStorage = document.querySelector("#removeStorage");
+
+            // 存入資料透過setItem()
+            // setItem()內有兩個參數，第一個會是這個存進去的localStorage的名稱，第二個參數則是我們真正要存進去的資料，資料格式都要是字串(要注意!!!，資料如果是物件的話存進去前要先轉成JSON(JSON.stringify)，依此類推資料取出來後要使用也要先解析過(JSON.parse()))
+            const obj = { name: "Kevin", age: 30 };
+            saveStorage.addEventListener("click", () => {
+                localStorage.setItem("myStorage", obj);
+                console.log(localStorage.getItem("myStorage"));
+            });
+
+            // 取的資料透過getItem()
+            // getItem()內只有一個參數，就是我們存進去的localStorage的名稱
+            getStorage.addEventListener("click", () => {
+                console.log(localStorage.getItem("myStorage"));
+            });
+
+            // 刪除資料透過removeItem()
+            // removeItem()內也只有一個參數，同樣是我們存進去的localStorage的名稱
+            removeStorage.addEventListener("click", () => {
+                localStorage.removeItem("myStorage");
+                console.log(localStorage.getItem("myStorage"));
+            });
+        </script>
+    </body>
+</html>

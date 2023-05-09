@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>無資料快速產生陣列</title>
+    </head>
+    <body>
+        <script>
+            const a = 666;
+            // 直接Array(10)，輸出的會是空白*10
+            console.log(Array(10)); // [空白 × 10]
+
+            // 裡面要fill才會有值
+            console.log(Array(10).fill(1)); // [1,1,1,1,...]
+
+            // 也可以fill變數
+            console.log(Array(10).fill(a)); // [666,666,666,666,...]
+
+            // 展開陣列後再Array(10)輸出是undefined但可以跑迴圈，缺點是value不能用
+            console.log([...Array(10)]); // [undefined,undefined,undefined,undefined,...]
+        </script>
+    </body>
+</html>

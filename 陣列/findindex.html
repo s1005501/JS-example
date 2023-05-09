@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>findIndex</title>
+    </head>
+    <body>
+        <script>
+            // // 第三個參數arr不常用
+            // const result = arr.findIndex((v, i, arr) => {
+            //     return 搜尋條件;
+            // });
+            const people = [
+                {
+                    name: "Casper",
+                    like: "鍋燒意麵",
+                    age: 18,
+                },
+                {
+                    name: "Wang",
+                    like: "炒麵",
+                    age: 24,
+                },
+                {
+                    name: "Bobo",
+                    like: "蘿蔔泥",
+                    age: 1,
+                },
+                {
+                    name: "滷蛋",
+                    like: "蘿蔔泥",
+                    age: 3,
+                },
+            ];
+
+            const findindexEmpty = people.findIndex((v, i, ar) => {});
+            console.log(findindexEmpty); // -1
+            const findindexAgeThan5 = people.findIndex((v, i, ar) => v.age > 5);
+            console.log(findindexAgeThan5); // 0
+            const findindexLike = people.findIndex(
+                (v, i, ar) => v.like == "蘿蔔泥"
+            );
+            console.log(findindexLike); // 2
+        </script>
+    </body>
+</html>

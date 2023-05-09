@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>URLSearchParams(轉換)</title>
+    </head>
+    <body>
+        <script>
+            // 物件轉換成Query String
+            // 直接將物件放到URLSearchParams的()即可，Query String的key、value對應物件的key、value
+            const obj = { a: 1, b: 2 };
+            const usp = new URLSearchParams(obj);
+            console.log(usp.toString()); // a=1&b=2
+            console.log("------------");
+
+            // 字串轉換成Query String
+            // 也是直接將字串放到URLSearchParams的()即可
+            const str = "a=1&b=2&a=100";
+            const usp2 = new URLSearchParams(str);
+            console.log(usp2.toString()); // a=1&b=2&a=100
+            console.log("------------");
+
+            // 陣列轉換成Query String
+            // 也是直接將陣列放到URLSearchParams的()即可，但較麻煩的點是要把陣列值(value)包成是鍵值對的格式
+            const arr = [
+                ["a", 1],
+                ["b", 2],
+                ["c", 3],
+            ];
+            const usp3 = new URLSearchParams(arr);
+            console.log(usp3.toString()); // a=1&b=2&c=3
+            console.log("------------");
+            // 以上這三個轉換輸出的結果是一樣的，但可能物件的可讀性最好
+
+            // URLSearchParams可以使用for...of、forEach迴圈
+            // for...of拿到的是Query String的值的陣列([key,value])
+            for (let [key, value] of usp) {
+                console.log(`key:${key}, value:${value}`);
+            }
+            console.log("------------");
+
+            // forEach的v拿到的是value，i拿到的是key，但好像不會修改到原資料
+            usp.forEach((v, i) => {
+                console.log(v, i);
+            });
+            console.log(usp.toString());
+        </script>
+    </body>
+</html>

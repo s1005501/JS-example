@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AJAX(XMLHttpRequest)</title>
+    </head>
+    <body>
+        <div id="info"></div>
+        <button onclick="doAjax()">案</button>
+        <script>
+            // 靜態文字檔
+            function doAjax() {
+                console.log(1);
+                const xhr = new XMLHttpRequest();
+
+                // xhr.onload = function () {
+                // 	info.innerHTML = xhr.responseText;
+                // };
+
+                xhr.addEventListener("load", function () {
+                    console.log(2);
+                    info.innerHTML = xhr.responseText;
+                });
+
+                xhr.open("GET", "hello_ajax.text", true);
+                console.log(3);
+
+                xhr.send();
+                console.log(4);
+            }
+
+            // JSON檔
+            let myData;
+            function doAjax() {
+                console.log(1);
+                const xhr = new XMLHttpRequest();
+
+                // onload版
+                // xhr.onload = function () {
+                // console.log(2);
+                // 	info.innerHTML = xhr.responseText;
+                // };
+
+                // addEventListener版
+                xhr.addEventListener("load", function () {
+                    myData = JSON.parse(xhr.responseText);
+                    // console.log(myData);
+                    console.log(2);
+                });
+
+                // // 隨便亂寫的物件=>陣列=>字串
+                // myData.forEach((v, i) => {
+                //     const aa = Object.keys(v);
+                //     const bb = Object.values(v);
+                //     console.log([...aa, ...bb]);
+                //     info.innerHTML += [...aa, ...bb].join("");
+                // });
+
+                xhr.open("GET", "hello_ajax2.json", true);
+                console.log(3);
+                xhr.send();
+                console.log(4);
+            }
+        </script>
+    </body>
+</html>

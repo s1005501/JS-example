@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>promise05</title>
+    </head>
+    <body>
+        <script>
+            // promise還有很多種內建的api可使用
+            // all()、any()、race()等....
+            // 也可以直接接resolve()、reject()來表示一定成功或失敗
+            function myPromise(str) {
+                const rnd = 500 + Math.floor(Math.random() * 1000);
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        const r = str + ":" + rnd;
+                        console.log(r);
+                        resolve(r);
+                    }, rnd);
+                });
+            }
+            const ar = [
+                myPromise("A").then((r) => {
+                    // 這裡如果這樣寫的話下面的promise.all的a會是undefined，因為沒有回傳值return
+                    console.log(`~~~`, r);
+                }),
+                myPromise("B"),
+                myPromise("C"),
+                myPromise("D"),
+            ];
+            // promise.all是指變數裡的陣列都執行完成後才會console
+            Promise.all(ar).then((r) => {
+                console.log(r);
+            });
+
+            // const successP = Promise.resolve(123).then((r) => console.log(r));
+            // const failP = Promise.reject(456).then((r) => console.log(r));
+        </script>
+    </body>
+</html>

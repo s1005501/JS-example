@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>箭頭函式</title>
+    </head>
+    <body>
+        <button>first</button>
+        <button>second</button>
+        <button>third</button>
+        <script>
+            // const 變數 = () => {
+            //     return 回傳內容;
+            // };
+            // 最常見
+            // const arrowFunction = () => {
+            //     return "我是甘博文";
+            // };
+            // console.log(arrowFunction()); // 我是甘博文
+
+            // // 參數只有一個時，可以省略小括號()，但如果沒有參數或有兩個參數以上時則()不可省略
+            // const arrowFunction = 參數1 => {
+            //     return `我是${參數1}`;
+            // };
+            // const arrowFunction1 = () => {
+            //     return "我是甘博文";
+            // };
+            // const arrowFunction2 = (參數1, 參數2) => {
+            //     return `${參數1}是${參數2}`;
+            // };
+            // console.log(arrowFunction("Kevin")); // 我是Kevin
+            // console.log(arrowFunction1()); // 我是甘博文
+            // console.log(arrowFunction2("Kevin", "甘博文")); // Kevin是甘博文
+
+            // // 省略大括號{}的話，代表直接return第一行程式碼，有{}就要有return
+            // const arrowFunction = () => {
+            //     return "我是甘博文";
+            // };
+            // const arrowFunction1 = () => "我是甘博文";
+            // console.log(arrowFunction()); // 我是甘博文
+            // console.log(arrowFunction1()); // 我是甘博文
+
+            // // 如果返回值或參數有包含{}(比如物件)，需要在物件的{}外再加上括號()
+            // const arrowFunction = () => ({ a: 1, b: 2 });
+            // console.log(arrowFunction()); // {a: 1, b: 2}
+
+            // // 如果有多行程式，需要加上大括號{}
+            // const arrowFunction = () => {
+            //     let num = Math.random() * 1000;
+            //     const numTofixed = num.toFixed(1);
+            //     return numTofixed;
+            // };
+            // console.log(arrowFunction());
+
+            // 箭頭函式裡不建議使用this，原因是因為在箭頭函式裡this指向的會是箭頭函式宣告時的環境，因此很常會一不小心就找錯對象(因為this由外部環境決定)
+            const num = document.querySelectorAll("button");
+            [...num].map((v, i) => {
+                v.addEventListener("click", () => {
+                    console.log(this.innerText);
+                });
+            });
+        </script>
+    </body>
+</html>
+

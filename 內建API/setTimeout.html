@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>setTimeout</title>
+    </head>
+    <body>
+        <script>
+            // setTimeout(() => {
+            //     執行內容;
+            // }, 間隔時間(單位毫秒));
+            setTimeout(() => {
+                console.log("hello");
+            }, 2000);
+
+            // 透過類似遞迴的方式可達成setInterval的功能
+            let n = 0;
+            function myRepeat() {
+                n++;
+                console.log({ n });
+                // throw new Error("發生錯誤"); //可中斷function運作
+                setTimeout(myRepeat, 1000);
+            }
+            // myRepeat();
+
+            // 這迴圈會形成一秒跑一次的效果
+            // i設0讓其馬上console一個結果出來
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    console.log({ i });
+                }, 1000 * i);
+            }
+        </script>
+    </body>
+</html>

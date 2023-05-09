@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>addEventListener</title>
+    </head>
+    <body>
+        <button>456</button>
+        <button>789</button>
+        <button id="btn3">remove aaa事件</button>
+        <script>
+            // // 匿名函式
+            // element.addEventListener(
+            //     "觸發事件的條件(事件名稱)",
+            //     () => {
+            //         觸發事件的內容;
+            //     },
+            //     布林值
+            // );
+
+            // 匿名函式改成變數
+            // element.addEventListener(
+            //     "觸發事件的條件(事件名稱)",
+            //     變數function,
+            //     布林值
+            // );
+            const btn = document.querySelector("button");
+            const btn2 = document.querySelectorAll("button")[1];
+
+            // 此種方式較彈性
+            const handler = (event) => {
+                console.log(event.type); // 事件類型
+                console.log(event.currentTarget); // 事件註冊的對象
+                console.log(event.target); // 事件底層來源
+            };
+            // 註冊事件處理器
+            // 事件名稱就是拿掉標籤事件處理器的on即可
+            btn.addEventListener("click", function (event) {
+                console.log("1:", this); // 這裡的this因為有function包住所以會指向btn
+            });
+
+            // 這裡不能直接複製整段，他會等於是創造一個新的function，所以會在重複執行同一段
+            btn.addEventListener("click", () => {
+                console.log("2:", this); // 這裡的this因為是用箭頭函式所以會指向windows
+            });
+
+            // 這裡的參照會是一樣的，所以只會觸發一次
+            btn.addEventListener("click", handler);
+            btn.addEventListener("click", handler);
+            btn.addEventListener("click", handler);
+            btn.addEventListener("click", handler);
+            btn.addEventListener("click", handler);
+            btn.addEventListener("click", handler);
+            btn2.addEventListener("click", handler);
+
+            const aaa = () => {
+                console.log("aaa");
+            };
+            btn2.addEventListener("click", aaa);
+
+            // 移除事件
+            // // 如果有要移除事件，則註冊事件時請用變數function來代替匿名函式，因為匿名函式難移除
+            // element.removeEventListener(
+            //     "觸發事件的條件(事件名稱)",
+            //     要移除的function名稱(通常是變數),
+            //     布林值
+            // );
+
+            const btn3 = document.querySelector("#btn3");
+            btn3.addEventListener("click", () => {
+                btn2.removeEventListener("click", aaa);
+            });
+            btn2.addEventListener(
+                "click",
+                (func = () => {
+                    console.log("痾痾痾");
+                    btn2.removeEventListener("click", func);
+                })
+            );
+        </script>
+    </body>
+</html>

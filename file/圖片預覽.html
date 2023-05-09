@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>圖片預覽</title>
+    </head>
+    <body>
+        <input type="file" name="upload" id="upload" multiple />
+        <img src="" height="200" alt="Image preview..." />
+        <script>
+            const reader = new FileReader();
+            const upload = document.querySelector("#upload");
+            const preview = document.querySelector("img");
+
+            // 預覽圖片
+            upload.addEventListener("change", (e) => {
+                console.log(upload.files);
+                // 這是把圖片透過FileReader.readAsDataURL()的方式轉成base64的格式
+                reader.readAsDataURL(upload.files[0]);
+                console.log(reader);
+                // 因為讀取需要時間因此是非同步，直接console會是null
+                console.log(reader.result);
+
+                // addEventListener方式
+                reader.addEventListener(
+                    "load",
+                    function () {
+                        preview.src = reader.result;
+                        console.log(reader.result);
+                    },
+                    false
+                );
+
+                // // onload方式
+                // reader.onload = () => {
+                //     preview.src = reader.result;
+                //     console.log(reader.result);
+                // };
+            });
+
+            // // 透過URL.createObjectURL這是直接找圖片在當前瀏覽器的記憶體位置
+            // upload.addEventListener("change", () => {
+            //     console.log(URL.createObjectURL(upload.files[0]));
+            // });
+        </script>
+    </body>
+</html>

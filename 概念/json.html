@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JSON</title>
+    </head>
+    <body>
+        <script>
+            // str = '{"name": "David", "age": 25 }';
+            // str = '[12, "abc"]';
+            // str = '24';
+            str = '"abc"';
+            const strJson = JSON.parse(str);
+            console.log(strJson); // abc
+
+            const arr = [
+                { name: "david", age: 25 },
+                { name: "carl", age: 28 },
+                { name: "bill", age: 31 },
+            ];
+            // [{"name":"david","age":25},{"name":"carl","age":28},{"name":"bill","age":31}]
+            console.log(JSON.stringify(arr));
+
+            // 物件
+            const a = '{"name": "David", "age": 25 }';
+            console.log(JSON.parse(a)); // {name: 'David', age: 25}
+            // 陣列
+            const b = '[12, "abc"]';
+            console.log(JSON.parse(b)); // [12, 'abc']
+            // 數字
+            const c = "24";
+            console.log(JSON.parse(c)); // 24
+            // 字串
+            const d = '"abc"';
+            console.log(JSON.parse(d)); // abc
+        </script>
+    </body>
+</html>

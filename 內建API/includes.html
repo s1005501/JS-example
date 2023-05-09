@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>includes</title>
+    </head>
+    <body>
+        <p class="A B C">includes</p>
+        <script>
+            const str = "求真、篤信、力行";
+            console.log(str.includes("求真")); // true
+            console.log(str.includes("博文")); // false
+            console.log("--------------");
+
+            const p = document.querySelector("p");
+            console.log(p.className);
+            console.log(p.classList);
+            console.log(p.className.includes("A")); // true
+            console.log(p.className.includes("C")); // true
+            console.log(p.className.includes("D")); // false
+        </script>
+    </body>
+</html>

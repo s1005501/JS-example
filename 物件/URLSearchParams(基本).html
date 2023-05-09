@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=`, initial-scale=1.0" />
+        <title>URLSearchParams(基本)</title>
+    </head>
+    <body>
+        <script>
+            // 可以設定、刪除和讀取網址的Query String
+            // 要搭配URL、location(當前的網址資訊)的search(先把Query String的部分先分離出來)
+            // 或是URL、location的searchParams(這會直接取得URLSearchParams物件，就不用再轉一次)
+            let githubURL = new URL(
+                "https://github.com/search?q=react&type=Code"
+            );
+            const urlSearch = githubURL.search;
+            const urlSearchParams = githubURL.searchParams;
+            console.log(urlSearch);
+            console.log(urlSearchParams);
+
+            // 使用URLSearchParams要先建立一個new URLSearchParams物件出來
+            // ()裡放的是透過URL、location.search分離出來的Query String
+            // const 變數 = new URLSearchParams(Query String);
+            let gitParams = new URLSearchParams(urlSearch);
+            // URLSearchParams物件沒辦法直接console出來，要查看值的話要透過toString()
+            console.log(gitParams.toString());
+            console.log(urlSearchParams.toString());
+
+            // 讀取
+            // 讀取單個用get()，()裡放的是Query String資料的key，拿到的值會是value
+            // 如果name有重複的話可以用getAll()取的全部的value，()裡放的是Query String資料的key，拿到的值會是陣列，陣列值就是value
+            console.log(gitParams.get("q"));
+            console.log(gitParams.get("type"));
+            console.log(gitParams.getAll("q"));
+            console.log("-------------------");
+
+            // 新增、修改
+            // set()可以用於新增、修改，()裡面給兩個參數，對應Query String的key、value，格式是字串
+            // 如果是給新的key即新增、給舊的即修改
+            gitParams.set("q", "vue");
+            gitParams.set("name", "Kevin");
+            console.log(gitParams.toString());
+            // 也可以透過append()新增，用法基本上跟set一樣。()裡面給兩個參數，對應Query String的key、value，格式是字串
+            gitParams.append("age", 30);
+            console.log(gitParams.toString());
+            console.log("-------------------");
+
+            // 刪除
+            // 刪除用delete，()內參數放的是要刪掉的Query String資料的key
+            gitParams.delete("q");
+            console.log(gitParams.toString());
+        </script>
+    </body>
+</html>

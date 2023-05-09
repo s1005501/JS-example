@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>promise06</title>
+    </head>
+    <body>
+        <script>
+            // promise還有很多種內建的api可使用
+            // all()、any()、race()等....
+            // 也可以直接接resolve()、reject()來表示一定成功或失敗
+            function myPromise(str) {
+                const rnd = 500 + Math.floor(Math.random() * 1000);
+                return new Promise((res, rej) => {
+                    setTimeout(() => {
+                        const r = str + ":" + rnd;
+                        console.log(r);
+                        if (rnd > 750) {
+                            res(r);
+                        } else {
+                            rej(r);
+                        }
+                    }, rnd);
+                });
+            }
+            const arr = [
+                myPromise("A").then((r) => {
+                    console.log(`~~~`, r); // 這裡如果這樣寫的話下面的promise.all的a會是undefined，因為沒有回傳值return
+                }),
+                myPromise("B"),
+                myPromise("C"),
+                myPromise("D")
+                    .then((r) => {
+                        throw new Error("錯誤測試");
+                    })
+                    .catch((ex) => {
+                        return ex;
+                    }),
+            ];
+            // promise.all(iterable)是指變數裡的陣列都執行完成後才會傳值，值是各自跑出來的資料
+            Promise.all(arr).then((r) => {
+                console.log("promise.all,", r);
+            });
+
+            // promise.any(iterable)輸出的值是iterable裡最先完成的值(不論其結果是res還是rej)
+            // Promise.any(arr).then((r) => {
+            //     console.log("promise.any,", r);
+            // });
+
+            // promise.race(iterable)輸出的值是iterable裡最先完成且是成功的值，但如果先完成的資料的結果是是失敗(rej)的話就中斷執行(跟any很像，差再race一定要成功的，any則不管結果)
+            // 這邊D失敗一樣有console出結果是因為D有用catch，輸出的值不會被視為是錯的
+            // Promise.race(arr).then((r) => {
+            //     console.log("promise.race,", r);
+            // });
+
+            // resolve()、reject()
+            // const successP = Promise.resolve(123).then((r) => console.log(r));
+            // const failP = Promise.reject(456).then((r) => console.log(r));
+        </script>
+    </body>
+</html>

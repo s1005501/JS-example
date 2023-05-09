@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>URL(pathname)</title>
+    </head>
+    <body>
+        <script>
+            const urlPathName = new URL("https://github.com/s1005501");
+            // 取得URL物件的網頁路徑
+            console.log(urlPathName.pathname);
+
+            // 修改網頁路徑
+            urlPathName.pathname = "s1005535";
+            console.log(urlPathName.pathname);
+        </script>
+    </body>
+</html>

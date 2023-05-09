@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>instanceof</title>
+    </head>
+    <body>
+        <script>
+            // // instanceof
+            // 要判斷的資料(通常會是物件) instanceof 要判斷的資料型態;
+            let myNumber = new Number();
+            let myString = new String();
+            const a = [1, 2, 3];
+            const o = { name: "kevin" };
+
+            console.log(666 instanceof Number); // false
+            console.log("kevin" instanceof String); // false
+            console.log(myNumber instanceof Number); // true
+            console.log(myString instanceof String); // true
+            console.log(a instanceof Object); // true
+            console.log(a instanceof Array); // true
+        </script>
+    </body>
+</html>

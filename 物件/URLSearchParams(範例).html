@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>URLSearchParams(範例)</title>
+    </head>
+    <body>
+        <script>
+            const googleURL = new URL("https://www.google.com.tw/search");
+            // 把物件塞進去形成新的query string
+            // 這樣做的原因是因為可以讓參數變得比較好閱讀
+            let searchParams = new URLSearchParams({
+                as_occt: "any",
+                as_q: "react",
+                as_qdr: "all",
+                cr: "countryTW",
+                hl: "zh-TW",
+                lr: "lang_zh-TW",
+            });
+            console.log(searchParams);
+            // URLSearchParams物件可以直接轉換成URL.search，不用再toString()轉換一次
+            googleURL.search = searchParams;
+
+            console.log(googleURL.search);
+
+            // fetch API
+            fetch(googleURL.href).then();
+        </script>
+    </body>
+</html>

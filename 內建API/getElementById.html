@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>getElementById</title>
+    </head>
+
+    <body>
+        <div id="id1">我是id1</div>
+        <div id="id1">我也是id1</div>
+        <div class="class1">我是class1</div>
+        <div class="class1">我也是class1</div>
+
+        <script>
+            // id
+            const id1 = document.getElementById("id1");
+            console.log(id1);
+            const id2 = document.getElementById("id2");
+            console.log(id2); // null
+
+            // class
+            const class1 = document.getElementsByClassName("class1");
+            console.log(class1);
+            const class2 = document.getElementsByClassName("class2");
+            console.log(class2);
+        </script>
+    </body>
+</html>

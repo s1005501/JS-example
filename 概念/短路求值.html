@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>短路求值</title>
+    </head>
+    <body>
+        <script>
+            // 實務上會用到的地方是為了防止資料錯誤導致頁面crash的情形，因此會把第二個要判斷的值設成true當成預設值，把變數帶進去做判斷，如果變數是false則帶入預設值
+            const example = 0; // 0、null、undefined、false都可以
+            console.log(example || "預設值"); // 預設值
+            console.log(example && "預設值"); // 0
+        </script>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>promise01</title>
+    </head>
+    <body>
+        <script>
+            // 顯示成功時
+            console.log("1");
+            // resolve、reject可以縮寫成res、rej
+            // 一般模擬都會用setTimeout
+            const p1 = new Promise((resolve, reject) => {
+                // 裡面如果是空的就會停留在pending狀態
+                setTimeout(() => {
+                    // 123這個值會傳到then裡面的param的變數裡
+                    // resolve()裡只能傳一個值，所以如果要傳多個值得畫要包成陣列、物件
+                    // resolve(123);
+                    resolve([1, 2, 3]);
+                }, 1000);
+            });
+            p1.then((param) => {
+                console.log(param); // [1,2,3]
+            });
+            console.log("2");
+
+            // pending
+            const p2 = new Promise((res, req) => {
+                // 一直停留在pending的狀態，所以不會觸發後面的then
+            });
+            p2.then((param) => console.log("test"));
+        </script>
+    </body>
+</html>

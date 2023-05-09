@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>基礎if+縮寫、三元</title>
+    </head>
+    <body>
+        <input
+            type="number"
+            name="age"
+            id="age"
+            min="1"
+            max="100"
+            value="15"
+            onchange="ageChange()"
+        />
+        <!-- 甚至可以直接將if判斷寫進onchange事件裡，但同樣不建議，會讓html、javascript混再一起 -->
+        <div id="box"></div>
+
+        <script>
+            // if (條件式) {
+            //     true時執行;
+            // } else {
+            //     false時執行;
+            // }
+            const myAge = document.querySelector("#age");
+            const box = document.querySelector("#box");
+            function ageChange() {
+                if (+myAge.value >= 18) {
+                    box.innerHTML = `成年`;
+                } else {
+                    box.innerHTML = `未成年`;
+                }
+            }
+
+            // 簡單的if判斷式其內的{}可以省略，但如果條件內容太多不建議這樣使用，可讀性差
+            // function ageChange() {
+            //     if (+myAge.value >= 18) box.innerHTML = `成年`;
+            //     else box.innerHTML = `未成年`;
+            // }
+
+            // 簡單的if判斷式也可以簡寫成三元判斷
+            // const ageChange = () => {
+            //     box.innerHTML = +myAge.value >= 18 ? `成年` : `未成年`;
+            // };
+
+            ageChange();
+        </script>
+    </body>
+</html>

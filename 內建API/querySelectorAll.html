@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>querySelectorAll</title>
+    </head>
+    <body>
+        <div id="id1">我是id1</div>
+        <div id="id1">我也是id1</div>
+
+        <div id="div1">
+            <p id="p1">我是p1</p>
+            <p id="p2">我是p2</p>
+        </div>
+        <script>
+            const id1 = document.querySelectorAll("#id1");
+            console.log(id1); // NodeList(2) [div#id1, div#id1]
+            const id2 = document.querySelectorAll("#id2");
+            console.log(id2); // NodeList []
+
+            // 還可以在透過querySelector選到元素後再選一次
+            const div1 = document.querySelector("#div1");
+            div1.querySelector("#p1").style.color = "red";
+        </script>
+    </body>
+</html>

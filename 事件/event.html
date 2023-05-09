@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>event</title>
+        <style>
+            .rect {
+                position: relative;
+                width: 300px;
+                height: 300px;
+                background-color: rgb(176, 221, 234);
+                border: 1px solid gray;
+            }
+            .ball {
+                position: absolute;
+                width: 150px;
+                height: 150px;
+                background-color: rgb(250, 62, 37);
+                border: 1px solid gray;
+                border-radius: 50%;
+                left: 50px;
+                top: 50px;
+            }
+            .rect2 {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                background-color: rgb(173, 241, 172);
+                border: 1px solid gray;
+                left: 50px;
+                top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="rect">
+            <div class="ball">
+                <div class="rect2">
+                    <a href="https://www.google.com/" id="google">google</a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // target、currentTarget
+            // const rect = document.querySelector(".rect");
+            // rect.addEventListener("click", (event) => {
+            //     // 事件註冊的對象 註冊事件的整個對象(不管有沒有點到子層元素)
+            //     console.log("currentTarget:", event.currentTarget);
+            //     console.log("-----------------------");
+            //     console.log("target:", event.target); // 事件底層來源 有點像是你點到到了啥
+            // });
+
+            // preventDefault()、stopPropagation()
+            const rect = document.querySelector(".rect");
+            const ball = document.querySelector(".ball");
+            const rect2 = document.querySelector(".rect2");
+
+            rect.addEventListener("click", (event) => {
+                console.log("rect");
+            });
+            ball.addEventListener("click", (event) => {
+                // 只阻擋預設的a標籤跳頁預設行為，事件浮出不會被中斷
+                event.preventDefault();
+                // 往外浮出時被阻斷掉
+                // event.stopPropagation();
+                console.log("ball");
+            });
+            rect2.addEventListener("click", (event) => {
+                console.log("rect2");
+            });
+        </script>
+    </body>
+</html>

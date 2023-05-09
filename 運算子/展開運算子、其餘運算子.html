@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>展開運算子、其餘運算子...</title>
+    </head>
+    <body>
+        <script>
+            // ...當作展開運算子時
+            // 功能1：合併陣列，類似concat()
+            console.log("功能1：合併陣列，類似concat()");
+            const arr1 = ["emma", "is"];
+            const arr2 = [18, "years old"];
+            const combinedArr = [...arr1, ...arr2];
+            console.log(combinedArr); // ["emma", "is", 18, "years old"]
+            console.log("--------------------");
+
+            // 功能2：傳入函式作為參數
+            console.log("功能2：傳入函式作為參數");
+            const mySum = (x, y) => {
+                return x + y;
+            };
+            const arrSum = [1, 2];
+            console.log(mySum(...arrSum)); // 3
+            console.log("--------------------");
+
+            // 功能3：將可迭代(literable)的物件轉為陣列
+            console.log("功能3：將可迭代(literable)的物件轉為陣列");
+            // 可迭代的物件有String、Array、TypedArray、Map、Set
+            const name = "emma";
+            const spreadName = [...name];
+            console.log(spreadName); // ['e','m','m','a']
+            console.log("--------------------");
+
+            // ...當作其餘運算子時
+            // 功能1：傳入一個不確定數量的值給函式作為參數(須注意在傳入函式時，必須是參數中的最後一位，而且參數中只能有一個其餘參數)
+            // 回傳參數加總
+            console.log(
+                "功能1：傳入一個不確定數量的值給函式作為參數---回傳參數加總"
+            );
+            const sumUp = (...nums) => {
+                console.log(nums); // 傳入的參數被組成陣列
+                let total = 0;
+                nums.forEach((number) => {
+                    total += number; // 將陣列內的數字加總起來
+                });
+                return total; // 回傳 total
+            };
+            console.log(sumUp(1)); // [1], 1
+            console.log(sumUp(1, 2, 3)); // [1,2,3], 6
+            console.log("--------------------");
+
+            // 傳入多個參數
+            console.log(
+                "功能1：傳入一個不確定數量的值給函式作為參數---傳入多個參數"
+            );
+            const many = (x, y, ...z) => {
+                // 指定了兩個參數和一個剩餘參數
+                console.log("x:", x); // 印出 x
+                console.log("y:", y); // 印出 y
+                console.log("z:", z); // 印出剩餘參數 z
+            };
+            many("emma", "is", 18, "years", "old");
+            // x: emma
+            // y: is
+            // z: [18,'years','old']  //後面剩下的被組成一個陣列了
+            console.log("--------------------");
+
+            // 傳入一個值，也會被組成陣列
+            console.log(
+                "功能1：傳入一個不確定數量的值給函式作為參數---傳入一個值"
+            );
+            many("emma", "is", "good");
+            // x: emma
+            // y: is
+            // z: ['good']
+            console.log("--------------------");
+
+            // 沒有傳入值，就會成為一個空的陣列，而不是 undefined
+            console.log(
+                "功能1：傳入一個不確定數量的值給函式作為參數---沒有傳入值"
+            );
+            many("emma", "is");
+            // x: emma
+            // y: is
+            // z: []
+            console.log("--------------------");
+
+            // 功能2：其餘運算搭配解構賦值(destructuring)
+            console.log(
+                "功能2：其餘運算搭配解構賦值(destructuring)---解構陣列"
+            );
+            // 解構陣列
+            const [a, ...b] = [1, 2, 3];
+            console.log(a); // 1
+            console.log(b); // [2, 3]
+            console.log("--------------------");
+
+            //解構物件
+            console.log(
+                "功能2：其餘運算搭配解構賦值(destructuring)---解構物件"
+            );
+            let { a1, b1, ...rest } = { a1: 1, b1: 2, c1: 3, d1: 4 };
+            console.log(a1); // 1
+            console.log(b1); // 2
+            console.log(rest); // {c1:3, d1:4}
+            console.log("--------------------");
+        </script>
+    </body>
+</html>

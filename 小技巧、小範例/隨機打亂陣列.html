@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>隨機打亂陣列</title>
+    </head>
+    <body>
+        <script>
+            // 隨機打亂陣列
+            // 方法一
+            // 透過sort()
+            // let arr = [5, 9, 15, 2, 999, 21, 59];
+            // arr = arr.sort(() => {
+            //     return 0.5 - Math.random();
+            // });
+            // console.log(arr);
+
+            // 方法二
+            // 網路上找得，但我看不懂XDDD
+            var arr = [4, 1, 67, 12, 45, 121, 3];
+            function randArr(num) {
+                for (var i = 0; i < num; i++) {
+                    var iRand = parseInt(num * Math.random());
+                    var temp = arr[i];
+                    console.log(iRand, temp);
+                    arr[i] = arr[iRand];
+                    arr[iRand] = temp;
+                }
+                return arr;
+            }
+            //測試：
+            console.log(randArr(arr.length));
+        </script>
+    </body>
+</html>

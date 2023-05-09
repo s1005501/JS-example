@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>for迴圈</title>
+    </head>
+    <body>
+        <script>
+            // for (起始式; 條件式; 步進式) {
+            //     迴圈內容;
+            // }
+            let a = 1;
+            // 空值++後還是空值，最後再把a的值設定給b
+            let b = a++;
+            console.log(b); // 1
+            // 把a的值++後再把值設定給c
+            let c = ++a;
+            console.log(c); // 3
+
+            for (let i = 0; i < 10; i++) {
+                console.log(i); // 1~9
+            }
+        </script>
+    </body>
+</html>

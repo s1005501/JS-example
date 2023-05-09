@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>非同步(國良老師async-await)</title>
+    </head>
+    <body>
+        <script>
+            // 當然也可以傳值進去
+            function login(userName, userPassword) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        console.log("login");
+                        resolve(true);
+                    }, 3000);
+                });
+                // 如果不透過promise直接return的話，loginResult拿到的值會是undefined，原因是因為這樣就變成是同步執行，主執行序不會等login的setTimeout回來就會繼續往下走，因此loginResult的值就會是undefined
+                // setTimeout(() => {
+                //     console.log("login");
+                //     return true;
+                // }, 3000);
+            }
+
+            // await只能放在有async的function裡面
+            async function doLoginAndCheck() {
+                // 通常會用變數去承接await傳回來的值
+                // 示範模擬實務上可能的狀況
+                const loginResult1 = await login1("John", "123456");
+                // const loginResult2 = await login2(loginResult1);
+                // const loginResult3 = await login3(loginResult2);
+                // const loginResult4 = await login4(loginResult3);
+
+                console.log("loginResult", loginResult);
+
+                if (loginResult) {
+                    console.log("loginResult");
+                }
+                // await check();
+            }
+            doLoginAndCheck();
+        </script>
+    </body>
+</html>

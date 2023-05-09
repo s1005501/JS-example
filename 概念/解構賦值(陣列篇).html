@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>解構賦值(陣列篇)</title>
+    </head>
+    <body>
+        <script>
+            // 陣列解構
+            const arr = [1, 2, 3, 4];
+            const [one, two, three, four] = arr;
+            console.log({ one, two, three, four }); // {one: 1, two: 2, three: 3, four: 4}
+            console.log("---------------------");
+
+            // 空變數，值會跳過
+            const [oneEmpty, , threeEmpty, fourEmpty] = arr;
+            console.log({ oneEmpty, threeEmpty, fourEmpty }); // {oneEmpty: 1, threeEmpty: 3, fourEmpty: 4}
+            console.log("---------------------");
+
+            // 此外為避免值沒有賦予造成undefined，可以使用預設值避免此問題
+            let [ming = "小明", jay = "杰倫"] = ["阿明"];
+            // 第一個會被賦值，第二個會用預設
+            // ming: "阿明"
+            // jay: "杰倫
+            console.log("---------------------");
+
+            // 變數交換
+            let oneChange = 1;
+            let twoChange = 2;
+            [oneChange, twoChange] = [twoChange, oneChange];
+            console.log({ oneChange, twoChange }); // {oneChange: 2, twoChange: 1}
+            console.log("---------------------");
+
+            // 字串拆解
+            const str = "我是甘博文";
+            const [a, b, c, d, e] = str;
+            console.log({ a, b, c, d, e }); // {a: '我', b: '是', c: '甘', d: '博', e: '文'}
+            console.log("---------------------");
+        </script>
+    </body>
+</html>

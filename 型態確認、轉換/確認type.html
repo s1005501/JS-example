@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>確認type</title>
+  </head>
+  <body>
+    <p>Hello World</p>
+    <script>
+      const a = [1, 2, 3];
+      const o = { name: "kevin" };
+      const hello = document.querySelector("p");
+
+      console.log(typeof a); // object
+      console.log(typeof o); // object
+      console.log(hello.constructor.name); // HTMLParagraphElement html p 標籤
+      console.log(a instanceof Object); // true
+      console.log(a instanceof Array); // true
+    </script>
+  </body>
+</html>

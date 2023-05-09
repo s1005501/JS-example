@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>map</title>
+    </head>
+    <body>
+        <script>
+            // const arrNew = arr.map((v, i) => {
+            //     return 迴圈內容;
+            // });
+            const people = [
+                { name: "David", age: 25, gender: "男" },
+                { name: "Mary", age: 24, gender: "女" },
+                { name: "Carl", age: 28, gender: "男" },
+                { name: "Bill", age: 31, gender: "男" },
+                { name: "Flora", age: 27, gender: "女" },
+            ];
+
+            const arr = people.map((v, i) => {
+                return v.name;
+            });
+            console.log(arr);
+            console.log("----------------");
+
+            const arr2 = people.map((v, i) => {
+                return `姓名：${v.name} 年齡：${v.age}`;
+            });
+            console.log(arr2);
+            console.log("----------------");
+
+            let a = [9000, 8500, 5500, 6500];
+            console.log(a);
+            let newA = a.map(function (v) {
+                return v * 2;
+            });
+            console.log(newA);
+        </script>
+    </body>
+</html>

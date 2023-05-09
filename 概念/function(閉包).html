@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>function 閉包</title>
+    </head>
+    <body>
+        <script>
+            const f = (function () {
+                let n = 3; // 中間有夾層
+                return function (a) {
+                    console.log(a);
+                    n--; // n仍然能夠指向到上一層的變數
+                    console.log(n);
+                    if (n >= 0) {
+                        return a * a;
+                    } else {
+                        return null;
+                    }
+                };
+            })();
+            console.log(f(9));
+            console.log(f(8));
+            console.log(f(7));
+            console.log(f(6));
+        </script>
+    </body>
+</html>

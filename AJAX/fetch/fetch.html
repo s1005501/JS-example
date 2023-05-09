@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>fetch</title>
+    </head>
+    <body>
+        <input type="text" />
+        <div id="info"></div>
+        <button onclick="doLoad()">載入</button>
+        <script>
+            // 請透過php的開啟方式打開
+            // function寫法
+            // 非同步執行順序1-4-2-3
+            function doLoad() {
+                console.log(1);
+                fetch("p20221130-05-plus-api.php?a=12&b=34")
+                    .then(function (response) {
+                        console.log(2);
+                        console.log(response);
+                        return response.text();
+                    })
+                    .then(function (txt) {
+                        console.log(3);
+                        console.log(txt);
+                        info.innerHTML = txt;
+                    });
+                console.log(4);
+            }
+
+            // // 箭頭函式寫法
+            // const doLoad = () => {
+            //     fetch("p20221130-05-plus-api.php?a=12&b=34")
+            //         .then((response) => response.text())
+            //         .then((data) => (info.innerHTML = data));
+            // };
+        </script>
+    </body>
+</html>

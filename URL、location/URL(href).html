@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>URL(href)</title>
+    </head>
+    <body>
+        <script>
+            // const 變數 = new URL("路徑");
+            // 透過new創建一個URL物件，()內放的是你要使用的路徑
+            const urlHref = new URL("https://www.google.com/");
+            // 取得URL物件的網址
+            console.log(urlHref.href);
+
+            // 更改網址
+            urlHref.href = "https://tw.yahoo.com/";
+            console.log(urlHref.href);
+        </script>
+    </body>
+</html>

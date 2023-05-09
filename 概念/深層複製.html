@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>深層複製</title>
+    </head>
+    <body>
+        <script>
+            const p1 = {
+                name: {
+                    first: "john",
+                    last: "wick",
+                },
+                age: 25,
+                gender: "male",
+            };
+
+            const p2 = { ...p1 }; // 淺層複製 只複製一層 只有第一層不受影響，下一層物件的參照仍然相同，因此p1做更改會影響到p2
+            const p3 = JSON.parse(JSON.stringify(p1)); // 深層複製 透過JSON先將物件轉成JSON格式再轉回去，已經和原本陣列是不同東西了，所以不受影響
+            p1.age = 32;
+            p1.name.first = "ben";
+
+            console.log(JSON.stringify(p1));
+            // {"name":{"first":"ben","last":"wick"},"age":32,"gender":"male"}
+            console.log(JSON.stringify(p2));
+            // {"name":{"first":"ben","last":"wick"},"age":25,"gender":"male"}
+            console.log(JSON.stringify(p3));
+            // {"name":{"first":"john","last":"wick"},"age":25,"gender":"male"}
+        </script>
+    </body>
+</html>
