@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>RegExp</title>
+    </head>
+    <body>
+        <script>
+            // 一種使用正規表達式的物件
+            // 有兩種建構方法，一是文字表示法，在要轉變為正規表達式的字串前後加上/即可
+            const reg1 = /Hello World/;
+            // 另一種是建構一個RegExp物件，()內放入正規表達式，要用""包住正規表達式
+            const reg2 = new RegExp("Hello World");
+            console.log(reg1);
+            console.log(reg2);
+
+            const reg3 = new RegExp("[A-Z]");
+            const str = "我是Kevin";
+            // 透過內建API來協助使用，這裡只列出常用的
+            // test()：檢測字串是否包含()裡的內容，回傳 true/false，要完全符合
+            // 格式：RegExp.test("判斷內容")
+            console.log(reg3.test("H"));
+
+            // search()：檢測字串是否包含符合正規表達式的值，有的話回傳 index，否則回傳 -1
+            // 格式：String.test(RegExp)
+            console.log(str.search(reg3));
+
+            // match()：尋找符合正規表達式的內容並回傳，有的話以陣列回傳，否則回傳 null
+            //格式：String.match(RegExp)
+            console.log(str.match(reg3));
+
+            // replace()：尋找並取代字串中匹配的部分，兩個參數，第一個是RegExp物件、正規表達式，第二個參數要換掉的內容
+            // 格式：String.replace(RegExp,"替換內容")
+            console.log(str.replace(reg3, "H"));
+        </script>
+    </body>
+</html>
