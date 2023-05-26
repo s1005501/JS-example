@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Set(物件)</title>
+    </head>
+    <body>
+        <script>
+            // Set()， ES6推出來的新東西，集合的一種，特性是其內容不會重復，是唯一值(元素)。
+
+            // 可迭代的物件都可以放進()裡，但通常來說會用來處理陣列。直接console出來會是類似物件的集合，因此會再透過淺層複製([...Set])轉換成陣列。陣列要轉換成Set就直接塞進Set的()裡就好
+
+            // 物件也可以用(但通常來說物件判斷唯一值是用Map，Map特性是鍵值對，鍵key會是唯一值)
+
+            // 透過new去建立，S大寫
+            // 物件
+            // 內建API在物件上也都可以使用
+            const set2 = new Set();
+            let Aaron = { name: "Aaron", country: "Taiwan" };
+            let Jack = { name: "Jack", country: "USA" };
+            let Johnson = { name: "Johnson", country: "Korea" };
+
+            // add()
+            set2.add(Aaron);
+            set2.add(Jack);
+            set2.add(Johnson);
+            console.log("add", set2);
+            console.log("-----------------------");
+
+            // has()
+            console.log("has", set2.has(Jack));
+
+            // size
+            console.log("size", set2.size);
+
+            // delete()
+            set2.delete(Johnson);
+            console.log("delete", set2);
+
+            // keys()、values()、entries()再物件裡要使用的話，通常要搭配for...of、forEach迴圈
+            // for...of的對象用的要是set.keys()...等等，entries輸出的會是陣列
+            for (let pair of set2.keys()) {
+                console.log("for...of-keys", pair);
+            }
+            // 用entires輸出的會是一模一樣的東西兩次，應該是因為set的keys、values長的一樣的關係
+            for (let pair of set2.entries()) {
+                console.log("for...of-entries", pair);
+            }
+
+            // forEach可以直接用
+            const set2ForEach = set2.forEach((v, i) => {
+                console.log("forEach", v);
+            });
+        </script>
+    </body>
+</html>

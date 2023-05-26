@@ -43,6 +43,8 @@
 
             // forEach的v拿到的是value，i拿到的是key，但好像不會修改到原資料
             usp.forEach((v, i) => {
+                v++;
+                i = i + 1;
                 console.log(v, i);
             });
             console.log(usp.toString());

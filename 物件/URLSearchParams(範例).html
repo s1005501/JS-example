@@ -20,13 +20,15 @@
                 lr: "lang_zh-TW",
             });
             console.log(searchParams);
-            // URLSearchParams物件可以直接轉換成URL.search，不用再toString()轉換一次
+
+            // URLSearchParams物件可以直接賦值給URL.search，讓其成為URL的Query String
             googleURL.search = searchParams;
 
             console.log(googleURL.search);
+            console.log(searchParams.toString());
 
             // fetch API
-            fetch(googleURL.href).then();
+            // fetch(googleURL.href).then();
         </script>
     </body>
 </html>

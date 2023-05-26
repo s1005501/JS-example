@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Set(陣列)</title>
+    </head>
+    <body>
+        <script>
+            // Set()， ES6推出來的新東西，集合的一種，特性是其內容不會重復，是唯一值(元素)。
+
+            // 可迭代的物件都可以放進()裡，但通常來說會用來處理陣列。直接console出來會是類似物件的集合，因此會再透過淺層複製([...Set])轉換成陣列。陣列要轉換成Set就直接塞進Set的()裡就好
+
+            // 物件也可以用(但通常來說物件判斷唯一值是用Map，Map特性是鍵值對，鍵key會是唯一值)
+
+            // 透過new去建立，S大寫
+            // 陣列
+            // 陣列轉換成Set
+            const set1 = new Set([1, 2, 3, 4, 4, 5, 6, 6, 6]);
+
+            // 常用的API
+            // has()可判斷有沒有這個值，以布林值輸出
+            console.log(set1.has(1));
+            console.log("----------------------------");
+
+            // size可以看Set中有多少元素
+            console.log("size", set1.size);
+            console.log("----------------------------");
+
+            // add()可新增值進去
+            set1.add(7);
+            console.log("add", set1);
+            console.log("轉成陣列", [...set1]);
+            console.log("----------------------------");
+
+            // delete()可刪掉值
+            set1.delete(3);
+            console.log("delete", set1);
+            console.log("----------------------------");
+
+            // keys()、values()在這功能基本上一模一樣，都是拿到元素的value
+            // entries()可拿到元素的鍵值對
+            console.log("keys", set1.keys());
+            console.log("values", set1.values());
+            console.log("entries", set1.entries());
+
+            // 過濾掉陣列裡的重複的值，缺點是只能輸出不重複的值(唯一值)，哪幾個值重複是沒辦法知道的
+            const arr = [1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4];
+            const arrToSet = new Set(arr);
+            const SetToNewArr = [...arrToSet];
+            console.log(SetToNewArr); // [1,2,3,4]
+        </script>
+    </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>取出重複、不重複的陣列值</title>
+    </head>
+    <body>
+        <script>
+            const arr = [1, 2, "a", 3, 1, "b", "a"];
+
+            // 個人比較習慣用filter
+
+            // 第一種：filter
+            // 不重複
+            // 以filter迴圈去過濾條件，透過陣列+indexOf找到陣列值的索引，再去跟迴圈的索引值比對，去判斷有沒有重複，有比對到表示該值是沒有重複的，沒有比對到表示之前已經出現過了，即重複
+            const firstNoRepeat = arr.filter((v, i) => {
+                return arr.indexOf(v) === i;
+            });
+            console.log("filter不重複", firstNoRepeat); // [1, 2, 'a', 3, 'b']
+
+            // 重複
+            const firstRepeat = arr.filter((v, i) => {
+                return arr.indexOf(v) !== i;
+            });
+            console.log("filter重複", firstRepeat); // [1, 'a']
+            console.log("-----------------");
+
+            // 第二種：Set
+            // 利用Set裡的元素是唯一值的特性來過濾掉陣列裡的重複的值，缺點是只能輸出不重複的值(唯一值)，哪幾個值重複是沒辦法知道的
+            // 把陣列塞進Set裡轉換完後再轉回陣列即可，展開或Array.from都可以達成
+            const secArrToSet = new Set(arr);
+            const secSpread = [...secArrToSet];
+            console.log("Set展開運算子", secSpread); // [1, 2, 'a', 3, 'b']
+
+            // 也可以用Array.from()
+            const secArrayFrom = Array.from(new Set(arr));
+            console.log("Set+Array.from()", secArrayFrom);
+            console.log("-----------------");
+
+            // 第三種：Object + Object.keys()
+            const arrThird = [...arr];
+            let thirdResult = {};
+            // 使用forEach迴圈搭配[]表示法賦值給一個空的物件{}  後面的判斷式是用來計算出現的次數，如果是false則給1，如果是true(有值)則值+1
+            arrThird.forEach((v, i) => {
+                thirdResult[v] = thirdResult[v] ? thirdResult[v] + 1 : 1;
+            });
+            console.log("Object + Object.keys()", Object.keys(thirdResult));
+            console.log("第三種直接console可以看數量", thirdResult);
+            console.log("-----------------");
+
+            // 第四種：reduce
+            const fourResult = arr.reduce((a, v) => {
+                // 邏輯跟上面一樣。差再這裡是利用reduce的累加特性，因此最後一個值(通常會是用a表示)就會是累加的結果，直接回傳就可以了
+                a[v] = a[v] ? a[v] + 1 : 1;
+                return a;
+                // 要注意的點是起始值要給物件才會生效
+            }, {});
+            console.log("reduce", fourResult);
+        </script>
+    </body>
+</html>
