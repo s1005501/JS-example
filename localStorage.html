@@ -27,14 +27,14 @@
             // setItem()內有兩個參數，第一個會是這個存進去的localStorage的名稱，第二個參數則是我們真正要存進去的資料，資料格式都要是字串(要注意!!!，資料如果是物件的話存進去前要先轉成JSON(JSON.stringify)，依此類推資料取出來後要使用也要先解析過(JSON.parse()))
             const obj = { name: "Kevin", age: 30 };
             saveStorage.addEventListener("click", () => {
-                localStorage.setItem("myStorage", obj);
+                localStorage.setItem("myStorage", JSON.stringify(obj));
                 console.log(localStorage.getItem("myStorage"));
             });
 
             // 取的資料透過getItem()
             // getItem()內只有一個參數，就是我們存進去的localStorage的名稱
             getStorage.addEventListener("click", () => {
-                console.log(localStorage.getItem("myStorage"));
+                console.log(JSON.parse(localStorage.getItem("myStorage")));
             });
 
             // 刪除資料透過removeItem()
