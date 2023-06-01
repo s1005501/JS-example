@@ -11,16 +11,16 @@
             id="form"
             enctype="multipart/form-data"
             action="/upload"
-           name="form1"
+            name="form1"
         >
             <input type="text" name="name" />
             <input type="file" name="file" />
             <button>Submit</button>
+            <button id="formAppend" type="button">append</button>
+            <button id="formDelete" type="button">delete</button>
+            <button id="formSet" type="button">set</button>
+            <button id="formGet" type="button">get</button>
         </form>
-        <button id="formAppend" type="button">append</button>
-        <button id="formDelete" type="button">delete</button>
-        <button id="formSet" type="button">set</button>
-        <button id="formGet" type="button">get</button>
 
         <script>
             // 在JS裡前端傳送資料到後端有很多種資料格式，multipart/form-data就是最常見的幾種(表頭的Content-Type可以查看送資料的格式)，其最大的用處在於使用者可以把複數個資料格式一次傳送（一個請求）出去，主要用在HTML的表單裡頭，或是在實作檔案上傳功能時使用到
@@ -33,10 +33,11 @@
 
             // 另外fetch資料，方法POST的時候，只要把資料放到body裡，也會被瀏覽器轉為FormData物件
 
-            // FormData物件可自行建構操作，透過new來完成，資料格式是鍵值對。可乘載指定的表單的資料(在FormData()的()裡下document.(form表單的name屬性值)就可取得該表單的資料)。也可透過內建API在FormData物件裡自行新增、刪除、修改資料
-
+            // FormData物件可自行建構操作，透過new來完成，資料格式是鍵值對。可乘載指定的表單的資料(在FormData()的()裡下document.(form表單的name屬性值)就可取得該表單的資料)。也可以透過在FormData()的()裡下e.target來抓到是哪個表單
             // const 變數= new FormData(document.form表單的name屬性值)
+            // const 變數= new FormData(e.target)
 
+            // 也可透過內建API在FormData物件裡自行新增、刪除、修改資料
             const formData = document.querySelector("#form");
             const formAppend = document.querySelector("#formAppend");
             const formDelete = document.querySelector("#formDelete");
@@ -78,17 +79,16 @@
             formData.addEventListener("submit", (e) => {
                 e.preventDefault();
 
-                // entries()可同時得到key、value，以陣列格式輸出，前key後value，但要搭配for...of迴圈
+                // entries()可同時得到key、value，用一個變數去乘載資料(我習慣叫pair)，以陣列格式輸出，前key後value，要搭配for...of迴圈使用
+                // pair裡面的key就是input裡面的name屬性(自訂義的，重要!，傳給後端的資料也是透過他去辨認)的值，value就是input的value屬性的值
                 const fd2 = new FormData(document.form1);
+
+                // 也可以透過在FormData()的()裡下e.target來抓到是哪個表單
+                const fd3 = new FormData(e.target);
                 for (let pair of fd2.entries()) {
-                    if (pair[1].name) {
-                        console.log(`key:${pair[0]}, value:${pair[1].name}`);
-                    } else {
-                        console.log(`key:${pair[0]}, value:${pair[1]}`);
-                    }
+                    console.log(pair);
                 }
             });
         </script>
-    </body>          method="POST"
-   
+    </body>
 </html>
