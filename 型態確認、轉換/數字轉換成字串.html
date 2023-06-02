@@ -21,10 +21,12 @@
             const n = 255;
             const s = "AE";
             console.log(n.toString(16)); // 轉換為十六進位的字串(ff)
-            console.log(parseInt(s)); // NaN
-            // parseInt(字串,數字)可以判斷要轉成後面數字進位的數值
-            console.log(parseInt(s, 16)); // 十六進位的字串轉換為數值
             console.log((300).toString(16)); // 12c
+
+            // parseInt(整數)、parseFloat(浮點數，即小數點)可以把字串轉回數字
+            // parseInt(字串,數字)可以判斷要轉成後面數字進位的數值
+            console.log(parseInt(s)); // NaN
+            console.log(parseInt(s, 16)); // 十六進位的字串轉換為數值
         </script>
     </body>
 </html>
