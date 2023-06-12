@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Infinity</title>
+    </head>
+    <body>
+        <script>
+            // const 無窮大 = 1 / 0;
+            // const 無窮小 = -1 / 0;
+
+            // 無窮大表示法
+            const bigNum1 = Infinity;
+            console.log("全域屬性Infinity(無窮大)：", bigNum1 > 9999999); // true
+
+            const bigNum2 = 1 / 0;
+            console.log("透過運算得到的無窮大：", bigNum2 > 9999999); // true
+
+            // 無窮小表示法
+            const smallNum1 = -Infinity;
+            console.log("全域屬性-Infinity(無窮小)：", -9999999 > smallNum1); // true
+
+            const smallNum2 = -1 / 0;
+            console.log("透過運算得到的無窮小：", -9999999 > smallNum2); // true
+
+            // 可以透過Number.isFinite()來判斷()內的值是不是有限的值，輸出布林值
+            console.log("isFinite判斷無窮大：", Number.isFinite(bigNum1)); // false
+            console.log("isFinite判斷無窮小：", Number.isFinite(smallNum1)); // false
+        </script>
+    </body>
+</html>

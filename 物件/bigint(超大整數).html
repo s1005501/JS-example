@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>bigint(超大整數)</title>
+    </head>
+    <body>
+        <script>
+            // bigint是為了解決超出最大安全數的值而發展出來的型態
+            // 要透過JS表示一個bigint數值，只要在整數數值後面加上一個n即可
+            console.log(typeof 666666666666666666n); // bigint
+
+            // 對bigint進行四則運算時，必須確保最終計算結果也必須為「整數」才行，否則其會自動幫你無條件捨去小數點
+            console.log(5000n / 3n);
+
+            // 不能與number型別混用，會噴錯
+            // console.log(5000n / 2);
+
+            // 將字串轉換成bigint，把字串塞進Bigint()即可
+            console.log(BigInt("55555")); // 55555n
+        </script>
+    </body>
+</html>

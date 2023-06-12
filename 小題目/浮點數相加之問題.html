@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>浮點數相加之問題</title>
+    </head>
+    <body>
+        <script>
+            // 浮點數相加會有產生誤差的現象出現
+            console.log(0.1 + 0.2); // 0.30000000000000004
+            console.log(0.2 + 0.4); // 0.6000000000000001
+            console.log(0.3 + 0.6); // 0.8999999999999999
+            console.log("-------------------------");
+
+            // 解決方式透過toFixed
+            console.log((0.1 + 0.2).toFixed(4)); // 0.3000
+            console.log((0.2 + 0.4).toFixed(4)); // 0.6000
+            console.log((0.3 + 0.6).toFixed(4)); // 0.9000
+        </script>
+    </body>
+</html>

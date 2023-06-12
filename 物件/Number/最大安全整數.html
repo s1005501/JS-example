@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>最大安全整數</title>
+    </head>
+    <body>
+        <script>
+            // 任何整數數值超過 2^53-1 (9007199254740991) 就會開始產生誤差，因此該值又稱為最大安全整數，可以用Number.MAX_SAFE_INTEGER來顯示
+            console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
+
+            // 所以只要現有的number數值超過Number.MAX_SAFE_INTEGER的話，建議就不要再算下去了。而且比較運算子 = (等於) > (大於) < (小於) 也都會出現問題
+
+            console.log(
+                9999999999999999999999 + 100 === 9999999999999999999999
+            ); // true
+
+            // isSafeInteger()，Number物件內建的API，可用於判斷該值是否是安全整數
+            console.log(Number.isSafeInteger(66666666)); // true
+
+            // isInteger()，Number物件內建的API，可用於判斷該值是否是整數
+            console.log(Number.isInteger(Number.MAX_SAFE_INTEGER + 55555555)); // true
+        </script>
+    </body>
+</html>

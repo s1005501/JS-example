@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>字串轉數字</title>
+    </head>
+    <body>
+        <script>
+            // +
+            // 透過+轉換成數值，即(+"123")，如果裡面有非數字的字串會無法辨認(+"123a")。也可以轉變數(+變數)
+            const a = "23a";
+            const b = "2.93";
+            console.log("+號： ", +"23"); // 23
+            console.log("+號： ", +"23a"); // undefined
+            console.log("+號： ", +a); // NaN
+            console.log("+號： ", +b); // 2.93
+            console.log("----------------");
+
+            // Number()
+            // 透過Number()轉換，()內放字串，單雙引號的空字串會被轉成0，如果裡面有非數字的字串會無法辨認，輸出NaN(有數字標記,也會被轉成NaN)
+            console.log("Number： ", Number("3.14")); // 3.14
+            console.log("Number： ", Number(" ")); // 0
+            console.log("Number： ", Number("a123")); // NaN
+            console.log("Number： ", Number("1,000")); // NaN，有數字標記,也會被轉成NaN
+            console.log("----------------");
+
+            // 內建API parseInt、parseFloat
+            // parseInt()，是將字串轉換成整數，其規則是如果是字串則轉換成數字，不是字串則先轉換成字串再轉成數字，所以給很大的數值(下面範例)的話會先被轉成'3e+31'再被轉成3(只會轉第一個出現的數值，但如果第一個值是字串會變NaN)。
+            // 此外如果起始字串是非數字的話會被判斷成NaN，即是之後的內容有數字也是一樣
+            console.log("parseInt： ", parseInt(a)); // 23
+            console.log("parseInt： ", parseInt(b)); // 2
+            console.log(
+                "parseInt： ",
+                parseInt("30000000000000000000000000000000")
+            ); // 3e+31
+            console.log(
+                "parseInt： ",
+                parseInt(30000000000000000000000000000000)
+            ); // 3
+            console.log("parseInt： ", parseInt("bb55")); // NaN
+
+            // parseFloat()，字串轉換成浮點數(含小數點)。此外如果起始字串是非數字的話會被判斷成NaN，即是之後的內容有數字也是一樣
+            console.log("parseFloat： ", parseFloat(a)); // 23
+            console.log("parseFloat： ", parseFloat(b)); // 2.93
+            console.log("parseFloat： ", parseFloat("bb55")); //NaN
+        </script>
+    </body>
+</html>

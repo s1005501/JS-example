@@ -25,6 +25,7 @@
                     }, rnd);
                 });
             }
+
             const arr = [
                 myPromise("A").then((r) => {
                     console.log(`~~~`, r); // 這裡如果這樣寫的話下面的promise.all的a會是undefined，因為沒有回傳值return
