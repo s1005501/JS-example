@@ -8,14 +8,15 @@
     </head>
     <body>
         <script>
+            // 會有這樣的差異是因為在鬆散比較下(==)，JS會幫你強制轉換型別與值
             let a = 5;
             let b = 10;
             const c = (a += b);
-            console.log(a === b);
-            console.log(a !== b);
+            console.log(a === b); // false
+            console.log(a !== b); // true
             console.log(5 == "5"); // true
-            console.log(5 === "5"); // 嚴謹模式下是false
-            console.log(c);
+            console.log(5 === "5"); // 嚴格比較下是false
+            console.log(c); // 15
         </script>
     </body>
 </html>

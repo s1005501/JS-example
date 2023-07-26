@@ -41,7 +41,7 @@
                 }
             })();
 
-            // 第三個是直接在接一個catch(因為async本質上還是一個promise)
+            // 第三個是直接在接then、catch(因為async本質上還是一個promise)
             (async () => {
                 for (let i = 0; i < 10; i++) {
                     console.log(await myPromise("C" + i));

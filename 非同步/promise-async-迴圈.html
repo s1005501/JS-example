@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>promise-async-迴圈</title>
+    </head>
+    <body>
+        <script>
+            function myPromise(str) {
+                const rnd = 500 + Math.floor(Math.random() * 1000);
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve(str + ":" + rnd);
+                    }, rnd);
+                }).then((r) => {
+                    console.log(r);
+                    return r;
+                });
+            }
+
+            const arr = ["A", "B", "C"];
+
+            // promise、async/await搭配各式迴圈
+
+            // 最基礎的for迴圈
+            const forPromise = async () => {
+                for (let i = 0; i < arr.length; i++) {
+                    await myPromise(arr[i]);
+                }
+            };
+            // forPromise();
+
+            // for/of
+            const forOfPromise = async () => {
+                for (const v of arr) {
+                    await myPromise(v);
+                }
+            };
+            // forOfPromise();
+
+            // map的不知道怎麼樣才能讓他照順序跑
+            // 底下的是不照順序
+            const mapPromise = async () => {
+                const newArr = arr.map(async (v, i) => {
+                    return await myPromise(v);
+                });
+                await Promise.all(newArr).then((r) => console.log(r));
+            };
+
+            // mapPromise();
+        </script>
+    </body>
+</html>

@@ -36,6 +36,21 @@
             //         .then((response) => response.text())
             //         .then((data) => (info.innerHTML = data));
             // };
+
+            // 直接使用fetch會預設判定你的方法是GET，如果要用POST方法或更改送出的request的設定比如檔頭的話，就要將設定用物件包住並將其作為第二參數傳入fetch()裡
+            // 在{}裡，value記得用""包起來，資料存在body裡。以下為範例
+            // function postData() {
+            //     fetch(url, {
+            //         method: "POST",
+            //         body: new FormData(document.form1),
+            //     })
+            //         .then(function (response) {
+            //             return response.text();
+            //         })
+            //         .then(function (txt) {
+            //             console.log(txt);
+            //         });
+            // }
         </script>
     </body>
 </html>

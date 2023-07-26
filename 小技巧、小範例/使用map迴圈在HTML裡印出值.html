@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>使用map迴圈在HTML裡印出值</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+            </div>
+        </div>
+
+        <script>
+            const people = [
+                { name: "David", age: 25, gender: "男" },
+                { name: "Mary", age: 24, gender: "女" },
+                { name: "Carl", age: 28, gender: "男" },
+                { name: "Bill", age: 31, gender: "男" },
+                { name: "Flora", age: 27, gender: "女" },
+            ];
+
+            const r = people.map(function (v, i) {
+                return v.name;
+            });
+            console.log(r);
+
+            // 透過map跑迴圈，return HTML格式
+            const r2 = people.map(function (v, i) {
+                return `<div class="alert alert-primary" role="alert">
+            <b>${v.name}</b> 年齡: ${v.age}
+          </div>`;
+            });
+
+            // 加上join("")就可以消掉陣列間的逗號,
+            document.querySelector(".col").innerHTML = r2.join("");
+        </script>
+    </body>
+</html>

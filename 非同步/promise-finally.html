@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>promise-finally</title>
+    </head>
+    <body>
+        <script>
+            function myPromise(str) {
+                const rnd = 500 + Math.floor(Math.random() * 1000);
+                return new Promise((res, rej) => {
+                    setTimeout(() => {
+                        const r = str + ":" + rnd;
+                        console.log(r);
+                        if (rnd > 750) {
+                            res(r);
+                        } else {
+                            rej(r);
+                        }
+                    }, rnd);
+                });
+            }
+
+            // 在promise後除了可以接then、catch外，還可以接finally，即不管最後的結果是resolve還是reject都會去執行finally裡面的code。但實務上較少用到
+            myPromise("A")
+                .then((r) => console.log("res: ", r))
+                .catch((r) => console.log("rej: ", r))
+                .finally(() => console.log("finally"));
+        </script>
+    </body>
+</html>

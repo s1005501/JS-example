@@ -74,14 +74,15 @@
             // })().then(() => console.log("A、B都完成")); // 跑完接then不一定需要拿到資料，也可以直接console
 
             // 自己瞎寫的練習
-            // const arr = [];
-            // (async function () {
-            //     for (let i = 0; i < 10; i++) {
-            //         const r = await myPromise("B" + i);
-            //         console.log(r);
-            //         arr.push(r);
-            //     }
-            // })().then(() => console.log(arr));
+            const arr = [];
+            const asyncPractice = async () => {
+                for (let i = 0; i < 10; i++) {
+                    const r = await myPromise("B" + i);
+                    console.log(r);
+                    arr.push(r);
+                }
+            };
+            asyncPractice().then(() => console.log(arr));
         </script>
     </body>
 </html>
