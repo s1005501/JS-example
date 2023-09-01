@@ -8,10 +8,17 @@
     </head>
     <body>
         <script>
+            // 字串
             const str = "求真、篤信、力行";
             console.log(str.indexOf("篤信")); // 3
             console.log(str.indexOf("力行", 3)); // 6
             console.log(str.indexOf("博文")); // -1
+
+            // 陣列
+            const arr = ["求真", "篤信", "力行"];
+            console.log(arr.indexOf("求真")); // 0
+            console.log(arr.indexOf("力行", 1)); // 2
+            console.log(arr.indexOf("博文")); // -1
         </script>
     </body>
 </html>

@@ -9,14 +9,22 @@
     <body>
         <p class="A B C">includes</p>
         <script>
+            // 字串
             const str = "求真、篤信、力行";
             console.log(str.includes("求真")); // true
             console.log(str.includes("博文")); // false
             console.log("--------------");
 
+            // 陣列
+            const arr = ["求真", "篤信", "力行"];
+            console.log(arr.includes("求真"));
+            console.log(arr.includes("博文"));
+            console.log("--------------");
+
+            // 元素
             const p = document.querySelector("p");
-            console.log(p.className);
-            console.log(p.classList);
+            console.log(p.className); // A B C
+            console.log(p.classList); // DOMTokenList(3) ['A', 'B', 'C', value: 'A B C']
             console.log(p.className.includes("A")); // true
             console.log(p.className.includes("C")); // true
             console.log(p.className.includes("D")); // false
