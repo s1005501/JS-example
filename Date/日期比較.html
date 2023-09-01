@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>日期比較</title>
+    </head>
+    <body>
+        <script>
+            // 日期都是越新越大
+            // const dateOne = new Date("2022-02-22");
+            const dateOne = "2022-02-22";
+            const dateTwo = "2022-02-23";
+
+            // 第一種：直接比較
+            console.log(dateOne < dateTwo); // true
+
+            // 第二種：轉成Date物件再做比較，先轉過一次好像比直接用字串去比好
+            const dateOneObj = new Date("2022-02-22");
+            const dateTwoObj = new Date("2022-02-23");
+            console.log(dateOne < dateTwo); // true
+
+            // 第三種：透過Date的內建api，getTime會拿到timeStamp，透過timeStamp去做比較
+            console.log(dateOneObj.getTime() < dateTwoObj.getTime()); // true
+        </script>
+    </body>
+</html>

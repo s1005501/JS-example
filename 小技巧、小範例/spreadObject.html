@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>迴圈更新物件資料</title>
+    </head>
+    <body>
+        <script>
+            const arr = [
+                { id: 1, name: "a1", age: 2 },
+                { id: 2, name: "a2", age: 2 },
+            ];
+
+            // 參數以其餘運算的方式寫入
+            const spreadObject = ({ ...data }) => {
+                return a.map((v, i) => {
+                    if (v.id === data.id) {
+                        // 這樣更新可以是可以但寫的有點死
+                        // return { ...v, name: data.name, age: data.age };
+
+                        // 在更新時，先將原資料展開在合併展開後的參數，這樣就可以動態更新
+                        return { ...v, ...data };
+                    }
+                    // 記得沒比對到的資料也要回傳，不然會只剩有比對到的資料
+                    return { ...v };
+                });
+            };
+
+            console.log(spreadObject({ id: 2, name: "a3" }));
+        </script>
+    </body>
+</html>
