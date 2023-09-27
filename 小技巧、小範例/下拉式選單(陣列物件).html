@@ -83,9 +83,7 @@
 
             // 老師的版本
             const cate1_tpl = () => {
-                const ar = cates.map(
-                    (el) => `<option value="${el.sid}">${el.name}</option>`
-                );
+                const ar = cates.map((el) => `<option value="${el.sid}">${el.name}</option>`);
                 return ar.join("");
             };
 
@@ -98,9 +96,7 @@
                     cate2.innerHTML = "";
                 }
                 console.log(c1_item.children);
-                const ar = c1_item.children.map(
-                    (el) => `<option value="${el.sid}">${el.name}</option>`
-                );
+                const ar = c1_item.children.map((el) => `<option value="${el.sid}">${el.name}</option>`);
                 cate2.innerHTML = ar.join("");
             };
             // // 準備第一層分類選單
@@ -118,12 +114,9 @@
 
             const render = () => {
                 const firstValue = first.value;
-                const firstItem = cates.find(
-                    (v, i) => v.sid == firstValue
-                ).children;
-                console.log(firstItem);
+                const firstItem = cates.find((v, i) => v.sid == firstValue).children;
+                console.log("firstItem", firstItem);
 
-                second.innerHTML = " ";
                 const arr2 = firstItem.map((v, i) => {
                     return (second.innerHTML += `<option value="${v.sid}">${v.name}</option>`);
                 });

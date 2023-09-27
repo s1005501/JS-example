@@ -15,12 +15,9 @@
             ];
             const multipleIf = (arr) => {
                 return arr.map((v, i) => {
-                    if (arr[i].name.includes("Kevin"))
-                        return console.log("Kevin");
-                    if (arr[i].name.includes("Robert"))
-                        return console.log("Robert");
-                    if (arr[i].name.includes("Hank"))
-                        return console.log("Hank");
+                    if (arr[i].name.includes("Kevin")) console.log("Kevin");
+                    if (arr[i].name.includes("Robert")) console.log("Robert");
+                    if (arr[i].name.includes("Hank")) console.log("Hank");
                 });
             };
             multipleIf(people);

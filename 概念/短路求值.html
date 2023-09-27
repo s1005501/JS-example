@@ -12,6 +12,9 @@
             const example = 0; // 0、null、undefined、false都可以
             console.log(example || "預設值"); // 預設值
             console.log(example && "預設值"); // 0
+
+            // 短路求值可以不只放兩個，可以判斷兩個以上的條件，理論上可以無限串下去
+            console.log(1 && 2 && 3 && 4 && 5); // 5
         </script>
     </body>
 </html>

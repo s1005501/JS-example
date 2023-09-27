@@ -4,15 +4,15 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>快捷運算子+三元運算子</title>
+        <title>快捷運算子(短路求值)+三元運算子</title>
     </head>
     <body>
         <script>
-            let a, b, c, d, c2, d2;
+            // (判斷式)?(true時回傳):(false時回傳)
+            let a, b, c, d;
 
-            // 快捷運算子
+            // 快捷運算子，就是短路求值
             (a = 0) && (b = 5);
-
             console.log("a:", a);
             console.log("b:", b);
             console.log("---------------");
@@ -24,10 +24,17 @@
             console.log("---------------");
 
             // 三元運算子
-            const r2 = false ? (c2 = 3) : (d2 = 5);
-            console.log("c2:", c2);
-            console.log("d2:", d2);
+            let e, f;
+            const r2 = false ? (e = 3) : (f = 5);
+            console.log("e:", e);
+            console.log("f:", f);
             console.log("r2:", r2);
+            console.log("---------------");
+
+            // 三元裡可以在塞三元
+            let g = true;
+            const r3 = true ? (g ? 7 : 8) : "false";
+            console.log(r3);
         </script>
     </body>
 </html>
