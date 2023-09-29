@@ -3,12 +3,33 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>window裡與screen有關的值</title>
+        <title>window裡與有關screen的東東</title>
     </head>
     <body>
         <script>
-            console.log()
+            // 注意小寫開頭的window才是物件，大寫開頭的Window指向的會是Function
+            // 使用時可以將window省略，效果一樣
+            console.log("小寫開頭的window", typeof window);
+            console.log("大寫開頭的window", typeof Window);
+
+            // window底下的屬性，screen裡取得大多是使用者螢幕的資訊
+            console.log("window.screen", window.screen);
+            console.log("screen", screen);
+
+            // width、height，取得的是螢幕的完整寬高
+            console.log("screen.width", screen.width);
+            console.log("screen.height", screen.height);
+
+            // availWidth、availHeight，取得的是螢幕的可用寬高，即扣除掉工具列、卷軸等瀏覽器介面的實際可用寬高
+            console.log("screen.availWidth", screen.availWidth);
+            console.log("screen.availHeight", screen.availHeight);
+
+            // 不知道以下兩個差在哪
+            // colorDepth，取得的是螢幕的顏色深度，值是數字，預設是24
+            console.log("screen.colorDepth", screen.colorDepth);
+
+            // pixelDepth，取得的是螢幕的像素的顏色深度，值是數字，預設是24
+            console.log("screen.pixelDepth", screen.pixelDepth);
         </script>
     </body>
 </html>
-取得有關

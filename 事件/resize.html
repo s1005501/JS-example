@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>resize</title>
+    </head>
+    <body>
+        <script>
+            // addEventListener裡的事件，當視窗大小有做變更時觸發
+            window.addEventListener("resize", () => {
+                if (window.innerWidth < 1000) {
+                    console.log("螢幕寬度小於1000");
+                }
+            });
+        </script>
+    </body>
+</html>

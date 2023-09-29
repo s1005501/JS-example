@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>scrollTo</title>
+        <style>
+            #myDiv {
+                height: 250px;
+                width: 250px;
+                overflow: auto;
+            }
+
+            #content {
+                height: 800px;
+                background-color: coral;
+            }
+        </style>
+    </head>
+    <body>
+        <button>Scroll</button>
+        <div id="myDiv">
+            <div id="content">
+                <p>Some text inside a div element.</p>
+                <p>Some text inside a div element.</p>
+                <p>Some text inside a div element.</p>
+                <p>Some text inside a div element.</p>
+            </div>
+        </div>
+        <script>
+            // scrollTo()
+            // 讓子元素滾動到父元素指定的位置去，但這個前提是父元素必須要有滾動的捲軸，因此用元素當滾動依據是有點難用，建議可以用window來做滾動位置的依據
+            // ()有三個參數，以物件包起來，分別是top、left、behavior，前兩個決定要滾動到父元素的那個位置，最後一個決定滾動模式，是可選參數
+            // 如果不用第三個參數，則前兩個參數可簡寫成數字直接放進()內
+            const btn = document.querySelector("button");
+            const myDiv = document.querySelector("#myDiv");
+
+            btn.addEventListener("click", () => {
+                myDiv.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+                // window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            });
+        </script>
+    </body>
+</html>
