@@ -12,9 +12,9 @@
                 { id: 2, name: "a2", age: 2 },
             ];
 
-            // 參數以其餘運算的方式寫入
-            const spreadObject = ({ ...data }) => {
-                return a.map((v, i) => {
+            console.log("未更新資料", arr);
+            const spreadObject = (data) => {
+                return arr.map((v, i) => {
                     if (v.id === data.id) {
                         // 這樣更新可以是可以但寫的有點死
                         // return { ...v, name: data.name, age: data.age };
@@ -27,7 +27,7 @@
                 });
             };
 
-            console.log(spreadObject({ id: 2, name: "a3" }));
+            console.log("更新後資料", spreadObject({ id: 2, name: "更新完的名稱" }));
         </script>
     </body>
 </html>

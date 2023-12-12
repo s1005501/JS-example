@@ -8,23 +8,14 @@
     </head>
     <body>
         <script>
-            // // 無限迴圈
-            // function chicken() {
-            //     return egg();
-            // }
-            // function egg() {
-            //     return chicken();
-            // }
-            // console.log("結果是", chicken());
-
             // 無限迴圈
-            function chicken() {
+            const chicken = () => {
                 return egg();
-            }
-            function egg() {
+            };
+            const egg = () => {
                 console.log("結果是", chicken());
                 return chicken();
-            }
+            };
             chicken();
         </script>
     </body>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>99乘法表</title>
+    </head>
+    <body>
+        <script>
+            // 陣列寫法
+            const arr1 = [];
+            for (let i = 0; i < 9; i++) {
+                arr1[i] = [];
+                for (let i2 = 0; i2 < 9; i2++) {
+                    arr1[i][i2] = `${i + 1} * ${i2 + 1} = ${(i + 1) * (i2 + 1)}`;
+                }
+            }
+            console.log(arr1);
+
+            // HTML印出來寫法
+            for (let j = 1; j <= 9; j++) {
+                for (let j2 = 1; j2 <= 9; j2++) {
+                    document.write(`${j} * ${j2} = ${j * j2} <br/>`);
+                }
+                document.write(`<br/>`);
+            }
+        </script>
+    </body>
+</html>
