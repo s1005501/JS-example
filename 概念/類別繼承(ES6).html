@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>類別繼承(ES6)</title>
+    </head>
+    <body>
+        <script>
+            class Animal {
+                constructor(name) {
+                    this.name = name;
+                    console.log(`${name}跑走了~`);
+                }
+            }
+
+            // 在ES6可以透過extends繼承其他類別的資料，在定義新的class的名稱後面加上extends 要繼承的類別的名稱
+            // class 子類別 extends 父類別{}
+            class Bird extends Animal {
+                // 如果有要使用到父類別的參數的話，要透過super()這個function，super的()跟constructor的()內都要放父類別的參數
+                constructor(name, speed) {
+                    super(name);
+                    this.speed = speed;
+                    console.log(`${name}以時速${speed}公里的速度跑走了~`);
+                }
+            }
+
+            const AngryBird = new Bird("憤怒鳥", 100);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>按值傳遞(copy by value)</title>
+    </head>
+    <body>
+        <script>
+            // js按值傳遞時建立該值的副本的概念就是copy by value
+            // 所謂的copy by value的運作邏輯是當我們宣告變數a=10時，js會將這個a=10儲存在記憶體裡，而當我們將a當成是實際帶入的參數代進function時，js就會幫我們進行copy by value的動作，即複製a的值給x，並將x=10一樣儲存在記憶體裡，但跟a不同位置，而當我們執行function時，被複製的x就會被改寫成20，被修改的就是x的記憶體，所以a是不變的
+            let a = 10;
+            const show = (x) => {
+                x = 20;
+            };
+            show(a);
+            console.log(a); // 10
+        </script>
+    </body>
+</html>
