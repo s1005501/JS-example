@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>簡易圖片上傳與預覽</title>
+    </head>
+    <body>
+        <form name="form1">
+            <label for="upLoad">圖片上傳:</label>
+            <input type="file" name="upLoad" id="upLoad" />
+            <img src="" alt="" id="preview" />
+            <hr />
+            <br />
+            <button id="btn">確認</button>
+        </form>
+
+        <script>
+            // 首先先將FormData(上傳功能，參數是form的name屬性)、FileReader(預覽功能)建立起來
+            const fd = new FormData(document.form1);
+            const reader = new FileReader();
+            const upLoad = document.querySelector("#upLoad");
+            const btn = document.querySelector("#btn");
+            const preview = document.querySelector("#preview");
+
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+
+                // 其次使用FileReader去讀取input裡的file資料(會存放在input.files[0]裡)，再透過readAsDataURL()將該資料轉成base64
+                // 須注意此步驟是異步
+                reader.readAsDataURL(upLoad.files[0]);
+
+                // 因為FileReader將圖片轉成base64的過程是異步，因此要做下一動前要先等其讀取完，所以要在FileReader上加上事件監聽load
+                reader.addEventListener("load", async () => {
+                    // FileReader轉完後結果會放在reader.result裡
+                    console.log(reader.result);
+
+                    // 圖片預覽的方式是直接把reader.result放到img的src裡就可以顯示了
+                    preview.src = reader.result;
+
+                    // 上傳的部分，將圖片資訊、base64都放進FormData裡
+                    fd.set("picture", upLoad.files[0]);
+                    fd.set("pictureBase64", reader.result);
+                    console.log("fdPicture", fd.get("picture"));
+                    console.log("fdPictureBase64", fd.get("pictureBase64"));
+
+                    // 最後在做上傳的發送ajax的動作
+                    postFile("路徑", fd);
+                });
+            });
+
+            const postFile = (url, data) => {
+                try {
+                    fetch(url, {
+                        method: "POST",
+                        body: data,
+                    }).then((r) => {
+                        console.log(r);
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+        </script>
+    </body>
+</html>
