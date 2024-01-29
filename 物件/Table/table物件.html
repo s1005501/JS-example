@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>table物件</title>
+    </head>
+    <body>
+        <table id="tableTest">
+            <thead>
+                <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="p"></p>
+        <p class="p"></p>
+        <p class="p"></p>
+        <script>
+            // Table物件，簡單來說就是透過querySelector、getElementBy等方式選到的table元素
+            const tableTest = document.querySelector("#tableTest");
+
+            // 其有幾個方便的屬性rows、tHead、tBodies、tFoot
+            // rows會回傳table裡所有的tr元素，以HTMLCollections呈現。依此類推，其他幾個屬性的功能跟rows差不多
+
+            console.log(tableTest.rows);
+            console.log(tableTest.tBodies);
+
+            // 其還有內建的API，最常用的
+        </script>
+    </body>
+</html>
