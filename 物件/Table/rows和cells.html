@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>rows和cells</title>       
+    </head>
+    <body>
+        <table id="tableTest">
+            <thead>
+                <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            const tableTest = document.querySelector("#tableTest");
+            const arr = [11, 21, 31];
+            // 在rows裡可以透過cells屬性來顯示tr裡的th、td元素(看那個tr是在thead還是tbody裡決定)，以HTMLCollections呈現
+            console.log(tableTest.rows[1].cells);
+
+            tableTest.insertRow(2);
+
+            // cells也可以insertCell()、deleteCell()來新增、刪除th、td元素，()內參數一樣是是th(td)在HTMLCollections裡的index
+            arr.map((v, i) => {
+                tableTest.rows[2].insertCell(i).innerText = v;
+                console.log(tableTest.rows[2].cells[i].innerText);
+            });
+        </script>
+    </body>
+</html>

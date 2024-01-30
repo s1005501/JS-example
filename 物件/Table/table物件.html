@@ -22,20 +22,21 @@
                 </tr>
             </tbody>
         </table>
-        <p class="p"></p>
-        <p class="p"></p>
-        <p class="p"></p>
         <script>
             // Table物件，簡單來說就是透過querySelector、getElementBy等方式選到的table元素
             const tableTest = document.querySelector("#tableTest");
 
             // 其有幾個方便的屬性rows、tHead、tBodies、tFoot
-            // rows會回傳table裡所有的tr元素，以HTMLCollections呈現。依此類推，其他幾個屬性的功能跟rows差不多
-
+            // rows會回傳table裡所有的tr元素，以HTMLCollections呈現，因此可以透過類似陣列[index]的方式顯示資料
+            // 依此類推，其他幾個屬性的功能跟rows差不多
             console.log(tableTest.rows);
             console.log(tableTest.tBodies);
 
-            // 其還有內建的API，最常用的
+            // 其還有內建的API，最常用的是insertRow()、deleteRow()
+            // insertRow()是新增一個新的、空的tr元素，()內的參數是tr在HTMLCollections裡的index
+            // deleteRow()是刪除一個tr元素，()內的參數是tr在HTMLCollections裡的index
+            tableTest.insertRow(2);
+            console.log(tableTest.rows);
         </script>
     </body>
 </html>
