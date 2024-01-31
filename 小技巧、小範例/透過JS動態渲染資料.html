@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>透過JS動態渲染資料</title>
+    </head>
+
+    <body>
+        <button id="typeOne">透過createElement、appendChild新增資料</button>
+        <button id="typeTwo">透過字串串接新增資料</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <script>
+            const typeOne = document.querySelector("#typeOne");
+            const typeTwo = document.querySelector("#typeTwo");
+            const data = [100, 200, 300];
+            const tbody = document.querySelector("tbody");
+
+            // 第一種方式，透過createElement()、appendChild()新增資料
+            // 注意，appendChild()只能放Node節點的資料
+            typeOne.addEventListener("click", (e) => {
+                e.preventDefault();
+                addTypeOne();
+            });
+            
+            const addTypeOne = () => {
+                const trElement = document.createElement("tr");
+                data.map((v, i) => {
+                    const tdElement = document.createElement("td");
+                    tdElement.innerHTML = `<td>${v}</td>`;
+                    trElement.appendChild(tdElement);
+                });
+                tbody.appendChild(trElement);
+            };
+
+
+            // 第二種方式，透過字串串接的方式新增資料
+            typeTwo.addEventListener("click", (e) => {
+                e.preventDefault();
+                addTypeTwo();
+            });
+
+            const addTypeTwo = () => {
+                let trHtmlStr = "<tr>";
+                data.map((v, i) => {
+                    trHtmlStr += `<td>${v}</td>`;
+                });
+                trHtmlStr = trHtmlStr + "</tr>";
+                tbody.innerHTML += trHtmlStr;
+            };
+        </script>
+    </body>
+</html>
