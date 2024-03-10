@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>break</title>
+    </head>
+    <body>
+        <script>
+            // break
+            // 主要的功能是用於終止"當前"迴圈，如果包在巢狀迴圈裡就只能終止break所在的迴圈，而要全部終止要使用return(但return主要功能是終止函式，因此如果迴圈要用return終止要先包在一個function裡)
+            // 適用於各式迴圈(for、while、switch...)，最常見於switch/case的應用裡
+
+            // break終止迴圈
+            for (let i = 0; i < 5; i++) {
+                for (let j = 0; j < 5; j++) {
+                    if (j == 2) {
+                        break;
+                    }
+                    console.log("break的i: " + i + ", break的j: " + j);
+                }
+            }
+
+            // return終止迴圈
+            const returnForLoop = () => {
+                for (let i = 0; i < 5; i++) {
+                    for (let j = 0; j < 5; j++) {
+                        if (j == 2) {
+                            return;
+                        }
+                        console.log("return的i: " + i + ", return的j: " + j);
+                    }
+                }
+            };
+            returnForLoop();
+
+            // 注意，break不可以直接在函式裡使用，會噴錯
+            let l = 0;
+            let r = 5;
+            while (l < r) {
+                (function () {
+                    if (l === 2) {
+                        // break;  // Uncaught SyntaxError: Illegal break statement
+                    }
+                })();
+                l++;
+                r--;
+            }
+        </script>
+    </body>
+</html>

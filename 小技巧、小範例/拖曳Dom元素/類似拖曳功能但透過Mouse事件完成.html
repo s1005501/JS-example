@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>類似拖曳功能但透過Mouse事件完成</title>
+        <style>
+            .one {
+                width: 150px;
+                aspect-ratio: 1/1;
+                background-color: red;
+                left: 100px;
+            }
+            .two {
+                width: 150px;
+                aspect-ratio: 1/1;
+                background-color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="one" id="test">
+            <p>1</p>
+        </div>
+        <div class="two" draggable="true">
+            <p>2</p>
+        </div>
+        <script>
+            // 這種寫法是是透過mouse事件來變更dom元素的style的top、left來達到類似移動的效果
+            const test = document.querySelector("#test");
+            // 首先對要拖拉dom元素註冊mousedown事件
+            test.addEventListener("mousedown", (e) => {
+                e.preventDefault();
+
+                // 接著要取到在該元素按下去的時候的位置
+                let x = e.offsetX;
+                let y = e.offsetY;
+                console.log("offsetX", x);
+                console.log("offsetY", y);
+
+                // 然後對整個螢幕(body、window應該都可以)註冊mousemove事件。這裡不用addEventLister是因為要removeEventLister時要用具名函式，但改用具名函式後mousemove只監聽的到一次，等於拖曳以後只會移動一次，試了很多次都沒辦法，只好改用on事件
+                document.querySelector("body").onmousemove = function (e1) {
+                    e1.preventDefault();
+                    console.log(e1.pageX);
+                    // 在mousemove事件裡，要減掉當初你在這個dom元素按下去的在該dom元素裡的座標(就是上面的offsetX、offsetY)，不然在拖曳dom元素時滑鼠進到dom元素裡就會永遠卡在左上角
+                    let left = e1.pageX - x;
+                    let top = e1.pageY - y;
+
+                    test.style.marginLeft = left + "px";
+                    test.style.marginTop = top + "px";
+                };
+            });
+            // 最後對要拖拉dom元素註冊mouseup事件，並把剛剛註冊在螢幕的mousemove移除掉
+            test.addEventListener("mouseup", (e) => {
+                e.preventDefault();
+                console.log("mouseup");
+                document.querySelector("body").onmousemove = null;
+            });
+        </script>
+    </body>
+</html>

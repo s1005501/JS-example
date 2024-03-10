@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>return</title>
+    </head>
+    <body>
+        <script>
+            // return
+            // 功能是終止函式，並同時回傳一個指定值，如果省略回傳值則預設回傳undefined，且寫在return後的code都不會被執行
+            // 因其有終止函式的特性，因此也可用於終止函式裡的迴圈運作
+            // return終止迴圈
+            const returnForLoop = () => {
+                for (let i = 0; i < 5; i++) {
+                    for (let j = 0; j < 5; j++) {
+                        if (j == 2) {
+                            return;
+                        }
+                        console.log("return的i: " + i + ", return的j: " + j);
+                    }
+                }
+            };
+            returnForLoop();
+            console.log(returnForLoop()); // 未指定回傳值，console出來就式undefined
+
+            // 通常來說只要函式裡有遇到return就會終止運作，但當return遇到map、forEach時該終止功能就會失效，而是起到類似continue的功能，跳過該迴圈
+            const arr = [1, 2, 3, 4, 5];
+            arr.map((v, i) => {
+                if (v == 2) {
+                    return;
+                }
+                console.log(v);
+            });
+        </script>
+    </body>
+</html>
